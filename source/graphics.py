@@ -14,3 +14,17 @@ def draw_rect(size, color, position):
     pygame.draw.rect(game.screen, color, (position, size), 0)
 
     return
+
+def draw_text(text, color, position):
+    """
+    Draws text to the screen
+
+    eg:
+        text ("hello")
+        color (255, 255, 255) rgb
+        position (x, y)
+    """
+    
+    label = game.main_font.render(text, 1, color)
+    game.screen.blit(label, position)
+    

@@ -23,6 +23,8 @@ $ python main.py
     - `graphics.py` - Helpful graphics functions
     - `sprite.py` - Sprite class
     - `update.py` - Handles the `update()` function
+    - `sound.py` - Handles sound + music playing
+* `main.py` - Program entry point
 
 ### Modifications
 There are two main parts of the starter kit that you will want to start your
@@ -70,15 +72,14 @@ these unless you know what you are doing.  Simply insert your own code after
 the comment "insert logic here".
 
 #### Init
-The `game.init` function (located in the `source/game.py` file) can be modified to contain game-wide initilization routines, and is run once before the game loop starts.  It is useful to put variable assignments, resource loading, and any other setup that might need doing here.
+The `game.init` function (located in the `main.py` file) can be modified to contain game-wide initilization routines, and is run once before the game loop starts.  It is useful to put variable assignments, resource loading, and any other setup that might need doing here.
 ```python
 ...
 my_var = 0
 
 def init():
-    game.sprites["player"] = Sprite("player.png")
+    game.player = Sprite("player.png")
     my_var = game.sprites["player"].rect
-    return
 ```
 
 #### Using sprites
@@ -93,19 +94,11 @@ my_sprite = Sprite("my_image.png", (50, 50))
 The `Sprite` class contains several useful properties which can be manipulated at runtime:
 * `Sprite.rect` - Rectangle describing sprite image, useful for collision detection
 * `Sprite.image` - Texture representing the sprite
+
 Sprites can be draw by invoking the `Sprite.draw` function.
-```
+```python
 my_sprite = Sprite("my_image.png", (50, 50))
 my_sprite.draw()
-```
-
-Inside `game.py` exists a dictionary called `sprites`, which can be used to store and access sprites throughout the game.
-```python
-import game
-from sprite import Sprite
-
-my_sprite = Sprite("my_image.png")
-game.sprites["player"] = my_sprite
 ```
 
 #### Resources
@@ -119,12 +112,25 @@ becomes
 ```python
 my_sprite = Sprite("resources/test.png", (50, 50))
 ```
+The following types of resources are accepted:
+* PNG
+* GIF
+* JPEG
+* WAV
+* OGG
 
 #### Keyboard input
 You can check for keyboard input in the `update` function like so:
 ```python
 for key in keys:
     if key == pygame.K_LEFT: # do whatever
+```
+
+#### Text drawing
+The starter kit has several functions to help with drawing, one of which
+speeds the process of drawing text.
+```python
+graphics.draw_text("Hello World", (255, 255, 255), (50, 50))
 ```
 
 ### License

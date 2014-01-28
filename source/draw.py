@@ -8,13 +8,13 @@ def draw():
     Drawing logic
     """
 
-    # Fill the screen with black
+    # Draw background
     game.screen.fill((40, 40, 40))
     
-    # insert logic here
+    # Drawing a sprite called my_sprite
+    # my_sprite.draw()
 
-    # Don't change these
-    pygame.display.update()
-    pygame.display.flip()
+    # Draw some text
+    # graphics.draw_text("Hello World", (255, 255, 255), (50, 50))
 
     return
