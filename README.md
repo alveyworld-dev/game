@@ -7,6 +7,7 @@ This game is developed with 4 primary teams.
 * Art
 * Music
 * Testing
+
 Each team has a specific purpose, team leader, and members who are best in that area.  Different teams have different needs, and as such will approach modifying the game in different ways.
 
 Not sure what team you're on?  Ask someone who knows, or [check here](https://github.com/alveyworld-dev/game/wiki/Team-Roster)
