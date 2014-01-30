@@ -1,0 +1,1 @@
+If you are reading this, then you are (hopefully) part of the Art Department and (also hopefully) not here to just watch youtube videos and listen to music. I'm going to have a READ_ME up in a bit - Xam5698
