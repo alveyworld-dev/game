@@ -16,7 +16,7 @@ Not sure what team you're on?  Ask someone who knows, or [check here](https://gi
 Codemonkeys, you will want to glance at the [Code Team README](https://github.com/alveyworld-dev/game/blob/master/CODING.md).  You should probably also get familiar with the starter kit, and get some tasks assigned to you!
 
 ### Art
-We don't have a README for you yet, so hold tight!  Your job is to create sprites, backgrounds, and level designs for the game.  If you don't think you are very good with drawing, you might consider level design or concepts.
+[Read this.](https://github.com/alveyworld-dev/game/blob/master/ART.md) Your job is to create sprites, backgrounds, and level designs for the game.  If you don't think you are very good with drawing, you might consider level design or concepts.
 
 ### Music
 [Here's your README](https://github.com/alveyworld-dev/game/blob/master/MUSIC.md) - read it and read it well.  We're going for retro sounding 8-bit music.
