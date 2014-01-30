@@ -23,7 +23,6 @@ def update(keys):
 
     if game.alvey.rect.bottom < 677:
         game.alvey.rect.bottom = 677
-        print game.alvey.rect.bottom
 
     # Handle input
     for key in keys:
