@@ -11,3 +11,4 @@ To document bugs simply do the following:
 7: Go back and find more bugs you slacker
 
 (More will be added to the READ_ME later, this is just bug documentation)
+- Xam5698
