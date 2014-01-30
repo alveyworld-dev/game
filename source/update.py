@@ -26,18 +26,15 @@ def update(keys):
             game.alvey.rect.y += game.alvey.velocity
             game.alvey.jump.play()
     
-    
+        
+        if game.alvey.jumping:
+            speed = game.alvey.speed/2
+        else:
+            speed = game.alvey.speed
+
         if key == pygame.K_LEFT:
-            if game.alvey.jumping:
-                speed = game.alvey.speed/2
-            else:
-                speed = game.alvey.speed
             game.alvey.rect.x -= speed
         if key == pygame.K_RIGHT:
-            if game.alvey.jumping:
-                speed = game.alvey.speed/2
-            else:
-                speed = game.alvey.speed
             game.alvey.rect.x += speed
         
             
