@@ -28,8 +28,9 @@ def init():
 
     game.alvey = Sprite("art_team/alveysprite.png", (125, 500))
     game.alvey.jump = Sound("jump.wav")
+    game.alvey.dead = False
     
-    #Alveysprite physics
+    # Alveysprite physics
     game.alvey.jumping = None
     game.alvey.gravity = .9
     game.alvey.velocity = 0

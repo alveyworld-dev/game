@@ -1,5 +1,4 @@
-import pygame
-import sys
+import pygame, sys, game
 from sprite import Sprite
 from sound import Sound, Music
 
@@ -25,13 +24,13 @@ class BackgroundLayer:
 
     def update(self):
         self.s1.rect.x -= self.speed
-        self.s2.rect.x -= self.speed
+        
+        if self.s1.rect.x <= 0:
+            self.s2.rect.x -= self.speed
 
-        if (self.s1.rect.x + 1280) == 0:
-            self.s1.rect.x = 1280
-        if (self.s2.rect.x + 1280) == 0:
+        if self.s2.rect.x <= 0:
             self.s1.rect.x = 0
-            self.s2.rect.x = 0
+            self.s2.rect.x = 1280
 
 class World:
     """
@@ -41,7 +40,7 @@ class World:
 
     def __init__(self):
         # World gravity constant
-        self.gravity = 15
+        self.gravity = 5
 
     def load(self):
         """
@@ -50,14 +49,11 @@ class World:
 
         # The order here matters! Back to front.
         self.layers = [
-            # Dark mountains
-            BackgroundLayer("world/test_bg_3.png", (0, 0), 3),
-
             # Clouds
-            BackgroundLayer("world/test_bg_2.png", (0, 0), 5.5),
+            BackgroundLayer("world/test_bg_2.png", (0, 0), 3.5),
 
             # Light mountains
-            BackgroundLayer("world/test_bg_1.png", (0, 0), 4)
+            BackgroundLayer("world/test_bg_1.png", (0, 0), 5)
         ]
 
         # Ground
