@@ -17,22 +17,38 @@ def update(keys):
 
     game.world.update()
 
-    # Gravity
-    if game.alvey.rect.bottom <= 677:
-        game.alvey.rect.y += game.world.gravity
-
-    if game.alvey.rect.bottom < 677:
-        game.alvey.rect.bottom = 677
-
     # Handle input
     for key in keys:
-        if key == pygame.K_LEFT: 
-            game.alvey.rect.x -= 15
-        if key == pygame.K_RIGHT: 
-            game.alvey.rect.x += 15
-        if key == pygame.K_UP: 
-            game.alvey.rect.y -= 25
+    
+        if key == pygame.K_UP and game.alvey.jumping == False:
+            game.alvey.jumping = True
+            game.alvey.velocity -= game.alvey.jump_power
+            game.alvey.rect.y += game.alvey.velocity
             game.alvey.jump.play()
+    
+    
+        if key == pygame.K_LEFT:
+            if game.alvey.jumping:
+                speed = game.alvey.speed/2
+            else:
+                speed = game.alvey.speed
+            game.alvey.rect.x -= speed
+        if key == pygame.K_RIGHT:
+            if game.alvey.jumping:
+                speed = game.alvey.speed/2
+            else:
+                speed = game.alvey.speed
+            game.alvey.rect.x += speed
+        
+            
+
+    if game.alvey.rect.bottom >= game.window_size[1]*.95:
+        game.alvey.rect.bottom = game.window_size[1]*.95
+        game.alvey.jumping = False
+        game.alvey.velocity = 0
+    if not game.alvey.rect.bottom == game.window_size[1]*.95:
+        game.alvey.velocity += game.alvey.gravity
+        game.alvey.rect.y += game.alvey.velocity
 
     if game.alvey.rect.right <= 0:
         print("boom. dead")
