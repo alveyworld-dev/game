@@ -10,7 +10,9 @@ class BackgroundLayer:
     allow many-layered backgrounds
     """
     
-    def __init__(self, filename, pos, scroll_speed):
+    def __init__(self, filename, scroll_speed):
+        pos = (0, 0)
+        
         self.s1 = Sprite(filename, pos)
         self.s2 = Sprite(filename, (1280, pos[1]))
 
@@ -50,10 +52,13 @@ class World:
         # The order here matters! Back to front.
         self.layers = [
             # Clouds
-            BackgroundLayer("world/test_bg_2.png", (0, 0), 3.5),
+            BackgroundLayer("world/test_bg_2.png", 3.5),
+
+            # Dark mountains
+            BackgroundLayer("world/test_bg_3.png", 4),
 
             # Light mountains
-            BackgroundLayer("world/test_bg_1.png", (0, 0), 5)
+            BackgroundLayer("world/test_bg_1.png", 5)
         ]
 
         # Ground
