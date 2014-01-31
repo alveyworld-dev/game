@@ -62,6 +62,14 @@ def draw():
 
     game.world.draw()
 
+    # This will overlay the world with a semi-transparent rectangle that
+    # will simulate the darkening or lightening of the world without actually
+    # changing the sprites.
+    overlay = pygame.Surface(game.window_size)
+    overlay.set_alpha(100)
+    overlay.fill(color_overlay)          
+    game.screen.blit(overlay, (0,0))
+
     if game.alvey.direction == 1:
         game.alvey.draw()
     else:
