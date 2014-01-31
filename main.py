@@ -27,8 +27,14 @@ def init():
     game.world.load()
 
     game.alvey = Sprite("art_team/alveysprite.png", (125, 500))
+
+    game.alvey.left_sprite = pygame.image.load(game.rpath + "art_team/alveysprite.png")
+    game.alvey.left_sprite = pygame.transform.flip(game.alvey.left_sprite, True, False)
+    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
+
     game.alvey.jump = Sound("jump.wav")
     game.alvey.dead = False
+    game.alvey.direction = 1
     
     # Alveysprite physics
     game.alvey.jumping = None

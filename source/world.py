@@ -52,13 +52,13 @@ class World:
         # The order here matters! Back to front.
         self.layers = [
             # Background mountains
-            BackgroundLayer("world/mountain.png", 2.5),
+            BackgroundLayer("world/mountain.png", 1),
 
             # Foreground trees
-            BackgroundLayer("world/trees.png", 3.5),
+            BackgroundLayer("world/trees.png", 2),
 
             # Clouds
-            BackgroundLayer("world/clouds.png", 5)
+            BackgroundLayer("world/clouds.png", 3)
         ]
 
         # Ground

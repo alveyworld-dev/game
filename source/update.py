@@ -32,8 +32,11 @@ def update(keys):
 
         if key == pygame.K_LEFT:
             game.alvey.rect.x -= speed
+            game.alvey.left_sprite_rect = game.alvey.rect
+            game.alvey.direction = -1
         if key == pygame.K_RIGHT:
             game.alvey.rect.x += speed
+            game.alvey.direction = 1
         
     if game.alvey.rect.bottom >= game.window_size[1]*.95:
         game.alvey.rect.bottom = game.window_size[1]*.95

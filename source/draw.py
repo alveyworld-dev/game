@@ -60,6 +60,10 @@ def draw():
     # graphics.draw_text("Hello World", (255, 255, 255), (50, 50))
 
     game.world.draw()
-    game.alvey.draw()
+
+    if game.alvey.direction == 1:
+        game.alvey.draw()
+    else:
+        game.screen.blit(game.alvey.left_sprite, game.alvey.left_sprite_rect)
 
     return
