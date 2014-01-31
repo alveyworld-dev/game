@@ -9,10 +9,10 @@ class BackgroundLayer:
     with multiple speeds can be used to create a parallax effect, or to
     allow many-layered backgrounds
     """
-    
+
     def __init__(self, filename, scroll_speed):
         pos = (0, 0)
-        
+
         self.s1 = Sprite(filename, pos)
         self.s2 = Sprite(filename, (1280, pos[1]))
 
@@ -26,7 +26,7 @@ class BackgroundLayer:
 
     def update(self):
         self.s1.rect.x -= self.speed
-        
+
         if self.s1.rect.x <= 0:
             self.s2.rect.x -= self.speed
 
@@ -51,20 +51,20 @@ class World:
 
         # The order here matters! Back to front.
         self.layers = [
+            # Background mountains
+            BackgroundLayer("world/mountains.png", 4),
+
+            # Foreground trees
+            BackgroundLayer("world/trees.png", 5),
+
             # Clouds
-            BackgroundLayer("world/test_bg_2.png", 3.5),
-
-            # Dark mountains
-            BackgroundLayer("world/test_bg_3.png", 4),
-
-            # Light mountains
-            BackgroundLayer("world/test_bg_1.png", 5)
+            BackgroundLayer("world/clouds.png", 3.5)
         ]
 
         # Ground
         self.ground = Sprite("world/test_bg_4.png", (0, 0))
 
-    def update(self):    
+    def update(self):
         """
         Update critical world information, such as background position, etc.
         """
