@@ -20,28 +20,28 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font   = pygame.font.Font("resources/main_font.ttf", 18)
-
+    game.main_font              = pygame.font.Font("resources/main_font.ttf", 18)
+    
     # Set up the game world.  There should only be one of these
-    game.world       = World()
+    game.world                  = World()
     game.world.load()
-
-    game.alvey = Sprite("art_team/alveysprite.png", (125, 500))
-
-    game.alvey.left_sprite = pygame.image.load(game.rpath + "art_team/alveysprite.png")
-    game.alvey.left_sprite = pygame.transform.flip(game.alvey.left_sprite, True, False)
+    
+    game.alvey                  = Sprite("art_team/alveysprite.png", (125, 500))
+    
+    game.alvey.left_sprite      = pygame.image.load(game.rpath + "art_team/alveysprite.png")
+    game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
     game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
-
-    game.alvey.jump = Sound("jump.wav")
-    game.alvey.dead = False
-    game.alvey.direction = 1
+    
+    game.alvey.jump             = Sound("jump.wav")
+    game.alvey.dead             = False
+    game.alvey.direction        = 1
     
     # Alveysprite physics
-    game.alvey.jumping = None
-    game.alvey.gravity = .9
-    game.alvey.velocity = 0
-    game.alvey.jump_power = 12
-    game.alvey.speed = 10
+    game.alvey.jumping          = None
+    game.alvey.gravity          = .9
+    game.alvey.velocity         = 0
+    game.alvey.jump_power       = 12
+    game.alvey.speed            = 10
 
     # Example:
     # game.my_sprite = Sprite("filename.png", (50, 50))
