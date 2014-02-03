@@ -13,6 +13,10 @@ from source.sprite import Sprite
 from source.sound import Sound, Music
 from source.world import World
 from source.jukebox import Jukebox
+clock=pygame.time.Clock()
+
+# Set the framerate. This makes the game smoother, or at least Jarod's section of code
+framerate = 60
 
 def init():
     """
@@ -73,6 +77,7 @@ def main():
 
     # Perform game loop
     while True:
+        timeDelayed=clock.tick(framerate)
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN: keys.add(event.key)
@@ -80,7 +85,7 @@ def main():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: sys.exit()
 
         update(keys)        # update.py
-        draw()              # draw.py
+        draw(framerate,timeDelayed)              # draw.py
         
         # Simply flips the display for drawing
         pygame.display.update()
