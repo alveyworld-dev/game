@@ -20,7 +20,8 @@ Codemonkeys, you will want to glance at the [Code Team README](https://github.co
 
 ### Music
 [Here's your README](https://github.com/alveyworld-dev/game/blob/master/MUSIC.md) - read it and read it well.  We're going for retro sounding 8-bit music.
-(also be sure to e-mail me (@ xam5698@hotmail.com) your music files to see where it's going along)
+
+- (also be sure to e-mail me (@ xam5698@hotmail.com) your music files to see where it's going along)
 
 ### Testing
 You have an important job: make sure the darned thing works, and that it works well!  You _must_ read up on the [GitHub issue tracker](https://github.com/alveyworld-dev/game/issues), for it will be your best friend.
