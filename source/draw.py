@@ -6,12 +6,12 @@ from sprite import Sprite
 for i in range(100):
     random.seed(random.randint(1,1000000000))
 
-daySeconds=200
+dayIncrement=200
 
-_R=164
-_G=240
-_B=238
-_M=13
+_R=164 * 1000000
+_G=240 * 1000000
+_B=238 * 1000000
+_M=13 * 1000000
 
 colorList=[
     _R/2,
@@ -30,18 +30,24 @@ def rangec(num,minimum,maximum):
 
 def solveColors():
     if not colorList[3]:
-        colorList[0]+=int((_R-_M)/daySeconds)
-        colorList[1]+=int((_G-_M)/daySeconds)
-        colorList[2]+=int((_B-_M)/daySeconds)
+        colorList[0]+=int((_R-_M)/dayIncrement)
+        colorList[1]+=int((_G-_M)/dayIncrement)
+        colorList[2]+=int((_B-_M)/dayIncrement)
     else:
-        colorList[0]-=int((_R-_M)/daySeconds)
-        colorList[1]-=int((_G-_M)/daySeconds)
-        colorList[2]-=int((_B-_M)/daySeconds)
+        colorList[0]-=int((_R-_M)/dayIncrement)
+        colorList[1]-=int((_G-_M)/dayIncrement)
+        colorList[2]-=int((_B-_M)/dayIncrement)
 
-    if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B and not colorList[3]) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M and colorList[3]):
-        colorList[3] = not colorList[3]
+    if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M):
+        if colorList[3]:
+            colorList[3]=False
+        else:
+            colorList[3]=True
 
-    return (rangec(colorList[0],_M,255),rangec(colorList[1],_M,255),rangec(colorList[2],_M,255))
+    colorList[0]=int(rangec(colorList[0],_M,_R))
+    colorList[1]=int(rangec(colorList[1],_M,_G))
+    colorList[2]=int(rangec(colorList[2],_M,_B))
+    return (colorList[0]/1000000,colorList[1]/1000000,colorList[2]/1000000)
 
 def draw():
     """
