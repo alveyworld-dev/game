@@ -9,6 +9,8 @@ To document bugs simply do the following:
 5: Submit the bug
 6: Someone will be notified and try to fix the bug
 7: Go back and find more bugs you slacker
+8: If you are still on youtube you will be permanently assigned to Team 5 watch
+9: If you are not watching Team 5, you will be fed to the laser sharks
 
 (More will be added to the READ_ME later, this is just bug documentation)
 - Xam5698
