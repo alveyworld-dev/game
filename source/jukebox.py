@@ -7,5 +7,11 @@ class Jukebox:
     we will pick a random music track from the avalible ones, and play them
     randomly at game start
     """
-    
-    pass
+    def __init__(self):
+        self.songs = [
+            "Music Assets/Retrobeat.wav",
+            ]
+
+    def play(self):
+        randomSong = Sound(self.songs[randint(0,len(self.songs)) - 1])
+    	randomSong.play()               

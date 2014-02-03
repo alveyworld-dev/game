@@ -12,6 +12,7 @@ from source.draw import draw
 from source.sprite import Sprite
 from source.sound import Sound, Music
 from source.world import World
+from source.jukebox import Jukebox
 
 def init():
     """
@@ -25,6 +26,8 @@ def init():
     # Set up the game world.  There should only be one of these
     game.world                  = World()
     game.world.load()
+    jukebox = Jukebox()
+    jukebox.play()
     
     # Player (Alvey)
     game.alvey                  = Sprite("art_team/alveysprite.png", (125, 500))
