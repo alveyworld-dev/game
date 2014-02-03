@@ -6,44 +6,42 @@ from sprite import Sprite
 for i in range(100):
     random.seed(random.randint(1,1000000000))
 
+daySeconds=200
+
+_R=164
+_G=240
+_B=238
+_M=13
+
 colorList=[
-    13, #random.randint(0,255),
-    13, #random.randint(0,255),
-    random.randint(0,255)
+    _R/2,
+    _G/2,
+    _B/2,
+    False #True if the colors are darkening
 ]
 
-colorChangeList=[0,0,0]
-
-def solveColor(listPosition):
-    # Add to the color value using the current color change rate
-    colorList[listPosition]+=colorChangeList[listPosition]
-
-    # Make sure it is in range
-    if colorList[listPosition]>255:
-        colorList[listPosition]=255
-    elif colorList[listPosition]<0:
-        colorList[listPosition]=0
-
-    # Add to the color change rate
-    colorChangeList[listPosition]+=random.randint(-1,1)
-
-    # Make sure it is in range
-    if colorChangeList[listPosition]>5:
-        colorChangeList[listPosition]=5
-    elif colorChangeList[listPosition]<-5:
-        colorChangeList[listPosition]=-5
-
-    # return the color
-    return colorList[listPosition]
+def rangec(num,minimum,maximum):
+    n=num
+    if n>=maximum:
+        n=maximum
+    elif n<=minimum:
+        n=minimum
+    return n
 
 def solveColors():
-    #r=solveColor(0)
-    r=13
-    #g=solveColor(1)
-    g=13
-    b=solveColor(2)
-    return (r,g,b)
+    if not colorList[3]:
+        colorList[0]+=int((_R-_M)/daySeconds)
+        colorList[1]+=int((_G-_M)/daySeconds)
+        colorList[2]+=int((_B-_M)/daySeconds)
+    else:
+        colorList[0]-=int((_R-_M)/daySeconds)
+        colorList[1]-=int((_G-_M)/daySeconds)
+        colorList[2]-=int((_B-_M)/daySeconds)
 
+    if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B and not colorList[3]) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M and colorList[3]):
+        colorList[3] = not colorList[3]
+
+    return (rangec(colorList[0],_M,255),rangec(colorList[1],_M,255),rangec(colorList[2],_M,255))
 
 def draw():
     """
