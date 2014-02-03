@@ -2,7 +2,7 @@
 
 If you are part of the music department, here are the qualifications for sound:
 First; you can get onto www.bfxr.net for sound effects (Of which we need DEARLY).
-You may also use any music making software of your choice AS LONG AS its files can be saved in the .wav format
+You may also use any music making software of your choice AS LONG AS its files can be saved in the .wav format (.AAC is also fine (really anything as long as it isn't mp3)).
 
 Or you can get onto Garage Band to create music, it must follow these qualifications::
 
