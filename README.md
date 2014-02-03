@@ -13,12 +13,45 @@ Each team has a specific purpose, team leader, and members who are best in that 
 Not sure what team you're on?  Ask someone who knows, or [check here](https://github.com/alveyworld-dev/game/wiki/Team-Roster)
 
 ### Coding
+<table>
+<tr>
+  <th>Joshua Beitler</th>
+  <th>Brandon Bench</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/joshbeitler">GitHub</a></td>
+  <td><a href="https://github.com/benchlord">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="mailto://joshbeitler@gmail.com">Email</a></td>
+  <td><a href="mailto://benchlord@gmail.com">Email</a></td>
+</tr>
+</table>
 Codemonkeys, you will want to glance at the [Code Team README](https://github.com/alveyworld-dev/game/blob/master/CODING.md).  You should probably also get familiar with the starter kit, and get some tasks assigned to you!
 
 ### Art
+<table>
+<tr>
+  <th>Deyge Falani</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/Werbenmenjensen">GitHub</a></td>
+</tr>
+</table>
 [Read this.](https://github.com/alveyworld-dev/game/blob/master/ART.md) Your job is to create sprites, backgrounds, and level designs for the game.  If you don't think you are very good with drawing, you might consider level design or concepts.
 
 ### Music
+<table>
+<tr>
+  <th>Max Mccarrol</th>
+</tr>
+<tr>
+  <td><a href="https://github.com/xam5698">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="mailto://xam5698@hotmail.com">Email</a></td>
+</tr>
+</table>
 [Here's your README](https://github.com/alveyworld-dev/game/blob/master/MUSIC.md) - read it and read it well.  We're going for retro sounding 8-bit music.
 
 - (also be sure to e-mail me (@ xam5698@hotmail.com) your music files to see where it's going along)
