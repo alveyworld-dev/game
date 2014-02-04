@@ -58,11 +58,11 @@ class World:
             BackgroundLayer("world/trees.png", 2),
 
             # Clouds
-            BackgroundLayer("world/clouds.png", 3)
-        ]
+            BackgroundLayer("world/clouds.png", 3),
 
-        # Ground
-        self.ground = Sprite("world/test_bg_4.png", (0, 0))
+            # Ground
+            BackgroundLayer("world/test_bg_4.png", 2)
+        ]
 
     def update(self):
         """
@@ -79,6 +79,3 @@ class World:
 
         for layer in self.layers:
             layer.draw()
-
-        # Ground
-        self.ground.draw()

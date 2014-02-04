@@ -1,5 +1,7 @@
 from source.sound import Sound, Music
 from random import randint
+from os import listdir
+from os.path import isfile, join
 
 class Jukebox:
     """
@@ -9,9 +11,9 @@ class Jukebox:
     """
     def __init__(self):
         self.songs = [
-            "Music Assets/Retrobeat.wav",
-            ]
+            "music/Retrobeat.wav",
+        ]
 
     def play(self):
-        randomSong = Sound(self.songs[randint(0,len(self.songs)) - 1])
-    	randomSong.play()               
+        randomSong = Music(self.songs[randint(0,len(self.songs)) - 1])
+    	randomSong.play(-1)               
