@@ -15,13 +15,19 @@ _B=238.0
 # Minimum R, G, B value for sky color
 _M=13.0
 
-colorList=[
-    _R/2,
-    _G/2,
-    _B/2,
-    False #True if the colors are darkening
-]
+# Maximum darkness for ambient; 0-255, 255 is darkest
+maxDark=200.0
 
+# Minimum darkness for ambient
+minDark=0.0
+
+colorList=[
+    (_R+_M)/2,
+    (_G+_M)/2,
+    (_B+_M)/2,
+    False, #True if the colors are darkening
+    (maxDark+minDark)/2
+]
 def rangec(num,minimum,maximum):
     n=num
     if n>=maximum:
@@ -35,12 +41,14 @@ def solveColors(fr,delayed):
         colorList[0]+=(_R-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
         colorList[1]+=(_G-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
         colorList[2]+=(_B-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
+        colorList[4]-=(maxDark-minDark)/(daySeconds/((2.0/fr)*(delayed/fr)))
     else:
         colorList[0]-=(_R-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
         colorList[1]-=(_G-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
         colorList[2]-=(_B-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
+        colorList[4]+=(maxDark-minDark)/(daySeconds/((2.0/fr)*(delayed/fr)))
 
-    if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B and not colorList[3]) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M and colorList[3]):
+    if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B and not colorList[3] and colorList[4]<=minDark) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M and colorList[3] and colorList[4]>=maxDark):
         if colorList[3]:
             colorList[3]=False
         else:
@@ -49,6 +57,7 @@ def solveColors(fr,delayed):
     colorList[0]=rangec(colorList[0],_M,_R)
     colorList[1]=rangec(colorList[1],_M,_G)
     colorList[2]=rangec(colorList[2],_M,_B)
+    colorList[4]=rangec(colorList[4],minDark,maxDark)
 
     return (
         int((math.floor(colorList[0]), math.ceil(colorList[0]))[colorList[0]<=_R/2]),
@@ -77,5 +86,10 @@ def draw(fr,delayed):
         game.alvey.draw()
     else:
         game.screen.blit(game.alvey.left_sprite, game.alvey.left_sprite_rect)
+    
+    overlay = pygame.Surface(game.window_size)
+    overlay.set_alpha(colorList[4])
+    overlay.fill((0,0,0))          
+    game.screen.blit(overlay, (0,0))
 
     return
