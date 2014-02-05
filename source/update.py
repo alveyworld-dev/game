@@ -34,9 +34,16 @@ def update(keys):
             game.alvey.rect.x -= speed
             game.alvey.left_sprite_rect = game.alvey.rect
             game.alvey.direction = -1
+            game.alvey.moving = True
         if key == pygame.K_RIGHT:
             game.alvey.rect.x += speed
             game.alvey.direction = 1
+            game.alvey.moving = True
+
+        if key != pygame.K_LEFT:
+            game.alvey.moving = False
+        if key != pygame.K_RIGHT:
+            game.alvey.moving = False
         
     if game.alvey.rect.bottom >= game.window_size[1]*.95:
         game.alvey.rect.bottom = game.window_size[1]*.95
@@ -49,8 +56,5 @@ def update(keys):
     if game.alvey.rect.right <= 0 and game.alvey.dead == False:
         print("boom. dead")
         game.alvey.dead = True
-
-    if game.alvey.rect.right >= 0:
-        game.alvey.rect.x -= 2
 
     return

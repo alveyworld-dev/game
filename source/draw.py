@@ -82,6 +82,8 @@ def draw(fr,delayed):
 
     game.world.draw()
 
+    # Direction 1 = right
+    # Anything else = left
     if game.alvey.direction == 1:
         game.alvey.draw()
     else:

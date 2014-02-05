@@ -3,6 +3,9 @@ import game
 from math import randint # I think that we should have a couple different 
 from sprite import Sprite # costumes that are randomized with each play!
 
+# Maybe we should inherit from the Character class in character.py
+# -josh
+
 class Player():
 	def __init__(self, health, texture):
 		self.alive = True

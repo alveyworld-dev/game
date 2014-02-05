@@ -41,6 +41,7 @@ def init():
     game.alvey.jump             = Sound("jump.wav")
     game.alvey.dead             = False
     game.alvey.direction        = 1
+    game.alvey.moving           = False
     # Alveysprite physics
     game.alvey.jumping          = None
     game.alvey.gravity          = .9
@@ -84,7 +85,7 @@ def main():
             if event.type == pygame.KEYUP: keys.discard(event.key)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: sys.exit()
 
-        update(keys)        # update.py
+        update(keys)                             # update.py
         draw(framerate,timeDelayed)              # draw.py
         
         # Simply flips the display for drawing

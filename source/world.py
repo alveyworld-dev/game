@@ -24,7 +24,7 @@ class BackgroundLayer:
         self.s1.draw()
         self.s2.draw()
 
-    def update(self):
+    def update(self, direction):
         self.s1.rect.x -= self.speed
 
         if self.s1.rect.x <= 0:
@@ -33,6 +33,7 @@ class BackgroundLayer:
         if self.s2.rect.x <= 0:
             self.s1.rect.x = 0
             self.s2.rect.x = 1280
+
 
 class World:
     """
@@ -70,7 +71,7 @@ class World:
         """
 
         for layer in self.layers:
-            layer.update()
+            layer.update(game.alvey.direction)
 
     def draw(self):
         """
