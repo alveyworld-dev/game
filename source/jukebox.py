@@ -12,9 +12,8 @@ class Jukebox:
     def __init__(self):
         self.songs = [
             "music/Game_Song.wav",
-            "music/Invasion.wav"
         ]
 
     def play(self):
         randomSong = Music(self.songs[randint(0,len(self.songs)) - 1])
-    	randomSong.play(-1)               
+    	randomSong.play(1)               
