@@ -16,7 +16,7 @@ _B=238.0
 _M=13.0
 
 # Maximum darkness for ambient; 0-255, 255 is darkest
-maxDark=200.0
+maxDark=186.0
 
 # Minimum darkness for ambient
 minDark=0.0
@@ -37,16 +37,17 @@ def rangec(num,minimum,maximum):
     return n
 
 def solveColors(fr,delayed):
+    notReallyGlobalVariableHi = (daySeconds)/((1.0)*(delayed/fr))/(fr/1000)
     if not colorList[3]:
-        colorList[0]+=(_R-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[1]+=(_G-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[2]+=(_B-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[4]-=(maxDark-minDark)/(daySeconds/((2.0/fr)*(delayed/fr)))
+        colorList[0]+=(_R-_M)/notReallyGlobalVariableHi
+        colorList[1]+=(_G-_M)/notReallyGlobalVariableHi
+        colorList[2]+=(_B-_M)/notReallyGlobalVariableHi
+        colorList[4]-=(maxDark-minDark)/notReallyGlobalVariableHi
     else:
-        colorList[0]-=(_R-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[1]-=(_G-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[2]-=(_B-_M)/(daySeconds/((2.0/fr)*(delayed/fr)))
-        colorList[4]+=(maxDark-minDark)/(daySeconds/((2.0/fr)*(delayed/fr)))
+        colorList[0]-=(_R-_M)/notReallyGlobalVariableHi
+        colorList[1]-=(_G-_M)/notReallyGlobalVariableHi
+        colorList[2]-=(_B-_M)/notReallyGlobalVariableHi
+        colorList[4]+=(maxDark-minDark)/notReallyGlobalVariableHi
 
     if (colorList[0]>=_R and colorList[1]>=_G and colorList[2]>=_B and not colorList[3] and colorList[4]<=minDark) or (colorList[0]<=_M and colorList[1]<=_M and colorList[2]<=_M and colorList[3] and colorList[4]>=maxDark):
         if colorList[3]:
@@ -71,7 +72,7 @@ def draw(fr,delayed):
     """
 
     # Draw background
-    color_overlay = solveColors(fr,float(delayed))
+    color_overlay = solveColors(float(fr),float(delayed))
     game.screen.fill(color_overlay)
     
     # Drawing a sprite called my_sprite
@@ -80,6 +81,12 @@ def draw(fr,delayed):
     # Draw some text
     # graphics.draw_text("Hello World", (255, 255, 255), (50, 50))
 
+    # Draw the stars
+    # stars=Sprite(" ", (0,0))
+
+    # Draw the sun
+    # Sun=Sprite(" ", (0,0))
+
     game.world.draw()
 
     if game.alvey.direction == 1:
@@ -87,7 +94,7 @@ def draw(fr,delayed):
     else:
         game.screen.blit(game.alvey.left_sprite, game.alvey.left_sprite_rect)
     
-    overlay = pygame.Surface(game.window_size)
+    overlay = pygame.Surface(game.window_size).convert()
     overlay.set_alpha(colorList[4])
     overlay.fill((0,0,0))          
     game.screen.blit(overlay, (0,0))
