@@ -70,8 +70,9 @@ class World:
         Update critical world information, such as background position, etc.
         """
 
-        for layer in self.layers:
-            layer.update(game.alvey.direction)
+        if game.alvey.moving:
+            for layer in self.layers:
+                layer.update(game.alvey.direction)
 
     def draw(self):
         """

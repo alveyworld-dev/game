@@ -72,6 +72,7 @@ def main():
     pygame.mixer.init()
     game.screen = pygame.display.set_mode(game.window_size, pygame.DOUBLEBUF)
     keys = set()
+    old_keys = set()
 
     # Set up game
     init()
@@ -85,9 +86,11 @@ def main():
             if event.type == pygame.KEYUP: keys.discard(event.key)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: sys.exit()
 
-        update(keys)                             # update.py
+        update(keys, old_keys)                   # update.py
         draw(framerate,timeDelayed)              # draw.py
         
+        old_keys = keys
+
         # Simply flips the display for drawing
         pygame.display.update()
         pygame.display.flip()

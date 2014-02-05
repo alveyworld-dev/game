@@ -1,7 +1,7 @@
 import pygame
 import game
 
-def update(keys):
+def update(keys, old_keys):
     """
     Update game world here
     """
@@ -30,21 +30,22 @@ def update(keys):
         else:
             speed = game.alvey.speed
 
+        # Player motion
         if key == pygame.K_LEFT:
             game.alvey.rect.x -= speed
             game.alvey.left_sprite_rect = game.alvey.rect
             game.alvey.direction = -1
-            game.alvey.moving = True
         if key == pygame.K_RIGHT:
             game.alvey.rect.x += speed
             game.alvey.direction = 1
-            game.alvey.moving = True
 
-        if key != pygame.K_LEFT:
-            game.alvey.moving = False
-        if key != pygame.K_RIGHT:
-            game.alvey.moving = False
-        
+        for oldkey in old_keys:
+            # it doesn't stop yet
+            if oldkey == pygame.K_LEFT and key == pygame.K_LEFT:
+                game.alvey.moving = True
+            if oldkey == pygame.K_RIGHT and key == pygame.K_RIGHT:
+                game.alvey.moving = True
+
     if game.alvey.rect.bottom >= game.window_size[1]*.95:
         game.alvey.rect.bottom = game.window_size[1]*.95
         game.alvey.jumping = False
