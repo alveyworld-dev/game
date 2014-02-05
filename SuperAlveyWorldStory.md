@@ -8,6 +8,8 @@
 
 > Thank you.
 
+[See here](https://github.com/alveyworld-dev/game/issues/34)
+
 Xzujw FqajdBtwqi Xytwd
 
 Gjqqf Xbfs mfx fqbfdx gjjs f qnyyqj gny inkkjwjsy. Sjajw tsj yt wzs bnym ymj hwtbi, Gjqqf 
