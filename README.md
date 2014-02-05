@@ -43,7 +43,7 @@ Codemonkeys, you will want to glance at the [Code Team README](https://github.co
 ### Music
 <table>
 <tr>
-  <th>Max Mccarrol</th>
+  <th>Max Mccarroll</th>
 </tr>
 <tr>
   <td><a href="https://github.com/xam5698">GitHub</a></td>
