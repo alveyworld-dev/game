@@ -11,7 +11,8 @@ class Jukebox:
     """
     def __init__(self):
         self.songs = [
-            "music/Retrobeat.wav",
+            "music/Game_Song.wav",
+            "music/Invasion.wav"
         ]
 
     def play(self):
