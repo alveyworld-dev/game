@@ -25,6 +25,16 @@ trying to protect from the ...
 parallel universe and Mr. Alvey must save someone
 
 - The parallel universe is called Alveyworld
+
+
+- A student of Mr.Alvey's was created a program that could make the simplest
+ painting 6D but it went completely wrong 
+and connected two worlds through a painting and a (someone) snatched one of
+his student and pull him into 
+the Alveyworld and he races to save the student but the frog people of 
+the villages had to grant him the magical power 
+to save the student and....
+
 =======
 > This letter is official notification under Section 512(c) of the Digital Millennium Copyright Act (”DMCA”), and I seek the removal of the aforementioned infringing material from your servers. I request that you immediately notify the infringer of this notice and inform them of their duty to remove the infringing material immediately, and notify them to cease any further posting of infringing material to your server in the future.
 
