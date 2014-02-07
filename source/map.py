@@ -3,12 +3,29 @@ from sprite import Sprite
 
 class Tile:
     """
-    Tiles will be represented thusly, I think you get the gist.
-    You can reference these by Tile.air, etc.
+    You can access a tile likewise:
+
+        test_tile = Tile()["air"]
+            => ("filename", 0)
     """
 
-    air     = 0
-    floor   = 1
+    def __init__(self):
+        self.tiles = {
+            "air"   : ("filename", 0),       
+            "floor" : ("filename", 1)
+        }
+
+    def __getitem__(self, key):
+        """
+        Don't mind this.  It is simply a way to easily access tiles
+        """
+        return self.tiles[key]
+
+    def __setitem__(self, key, value):
+        """
+        Don't mind this.  It is simply a way to easily access tiles
+        """
+        self.tiles[key] = value
 
 class Map:
     """

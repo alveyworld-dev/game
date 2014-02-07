@@ -10,9 +10,11 @@ from source import game
 from source.update import update
 from source.draw import draw
 from source.sprite import Sprite
-from source.sound import Sound, Music
+from source.sound import *
 from source.world import World
 from source.jukebox import Jukebox
+from source.map import *
+
 clock=pygame.time.Clock()
 
 # Set the framerate. This makes the game smoother, or at least Jarod's section of code
@@ -48,18 +50,9 @@ def init():
     game.alvey.jump_power       = 12
     game.alvey.speed            = 10
 
-    # Example:
-    # game.my_sprite = Sprite("filename.png", (50, 50))
-    
-    # Play a sound!
-    # game.coin = Sound("coin.wav")
-    # game.coin.play()
-
-    # Drop those jams!
-    # game.music = Music("music.ogg")
-    # game.music.play()
-
-    return
+    # Test post, please ignore
+    # game.test_tile = Tile()["air"]
+    # print(game.test_tile)
 
 def main():
     """
