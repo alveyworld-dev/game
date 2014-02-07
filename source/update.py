@@ -23,7 +23,7 @@ def update(keys):
             game.alvey.jumping = True
             game.alvey.velocity -= game.alvey.jump_power
             game.alvey.rect.y += game.alvey.velocity
-            game.alvey.jump.play()
+            # game.alvey.jump.play() this crashes game
         
         if game.alvey.jumping:
             speed = game.alvey.speed/2
@@ -37,7 +37,11 @@ def update(keys):
         if key == pygame.K_RIGHT:
             game.alvey.rect.x += speed
             game.alvey.direction = 1
-        
+        if key == pygame.K_DOWN:
+            game.alvey.duck_sprite_rect = game.alvey.rect
+            game.alvey.image = pygame.image.load(game.rpath + "art_team/alveyduck.png").convert()
+            game.alvey.ducking = True
+
     if game.alvey.rect.bottom >= game.window_size[1]*.95:
         game.alvey.rect.bottom = game.window_size[1]*.95
         game.alvey.jumping = False

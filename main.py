@@ -37,14 +37,15 @@ def init():
     
     # Player (Alvey)
     game.alvey                  = Sprite("art_team/alveysprite.png", (125, 500))
-    game.alvey.left_sprite      = pygame.image.load(game.rpath + "art_team/alveysprite.png")
-    game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
-    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()    
-    game.alvey.jump             = Sound("jump.wav")
+    #game.alvey.left_sprite      = game.alvey.image
+    #game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
+    game.alvey.left_sprite      = pygame.transform.flip(game.alvey.image, True, False)
+    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
     game.alvey.dead             = False
     game.alvey.direction        = 1
     # Alveysprite physics
     game.alvey.jumping          = None
+    game.alvey.ducking          = False
     game.alvey.gravity          = .9
     game.alvey.velocity         = 0
     game.alvey.jump_power       = 12

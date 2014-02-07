@@ -9,6 +9,6 @@ class Sprite(pygame.sprite.Sprite):
      	self.rect.x = position[0]
      	self.rect.y = position[1]
         return
-
     def draw(self):
+
         game.screen.blit(self.image, self.rect)
