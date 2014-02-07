@@ -50,10 +50,6 @@ def init():
     game.alvey.jump_power       = 12
     game.alvey.speed            = 10
 
-    # Test post, please ignore
-    # game.test_tile = Tile()["air"]
-    # print(game.test_tile)
-
 def main():
     """
     Main game initilization code
