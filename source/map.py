@@ -60,7 +60,7 @@ class Map:
 
     def draw(self):
         for tile in self.tiles:
-            tile.draw
+            tile.draw()
 
     def update(self):
         for tile in self.tiles:
@@ -72,7 +72,7 @@ class Map:
                 if tile.tile_type == 'f':
                     if not self.finished:
                         self.finished = True
-                    print("Level complete")
+                        print("Level complete")
                 return True
 
     def add(self, tile):
