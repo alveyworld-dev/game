@@ -33,8 +33,8 @@ class Tile:
 
     def __init__(self, tiletype, position):
         self.tile_type = tiletype
-        self.position = position
-        self.sprite = Sprite(TileType()[tiletype][0], self.position)
+        self.position  = position
+        self.sprite    = Sprite(TileType()[tiletype][0], self.position)
 
     def draw(self):
         self.sprite.draw()
@@ -65,8 +65,8 @@ class Map:
         for tile in self.tile_entities:
             if tile.sprite.rect.colliderect(game.alvey.rect):
                 if tile.tile_type == 'f':
-                    self.finished = True
-                    print("yay")
+                    if not self.finished: self.finished = True
+                    print("Level complete")
                 return True
 
     def add(self, tile):

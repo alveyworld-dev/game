@@ -71,7 +71,7 @@ def draw_hud():
     This is seperate mearly for simplicity
     """
 
-    graphics.draw_text("Score: " + str(game.score), (255, 255, 255), (25, 25))
+    graphics.draw_text("Score: " + str(game.score), (14, 14, 14), (25, 25))
 
 def draw(fr,delayed):
     """

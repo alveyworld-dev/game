@@ -27,7 +27,7 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font              = pygame.font.Font("resources/main_font.ttf", 24)
+    game.main_font              = pygame.font.Font("resources/main_font.otf", 14)
     
     # Set up the game world.  There should only be one of these
     game.world                  = World()
