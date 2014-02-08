@@ -10,7 +10,8 @@ class TileType:
         self.tiles = {     
             'f'   : ("filename", "floor"),
             'b'   : ("sample-tile.png", "block"),
-            'x'   : ("filename", "death")
+            'x'   : ("filename", "death"),
+            'f'   : ("finished-tile.png", "finished")
         }
 
     def __getitem__(self, key):
@@ -46,6 +47,7 @@ class Map:
     def __init__(self):
         self.tile_entities = []
         self.camera_offset = 0
+        self.finished      = False
 
     def draw(self):
         """
@@ -62,6 +64,9 @@ class Map:
     def collides_player(self):
         for tile in self.tile_entities:
             if tile.sprite.rect.colliderect(game.alvey.rect):
+                if tile.tile_type == 'f':
+                    self.finished = True
+                    print("yay")
                 return True
 
     def add(self, tile):
