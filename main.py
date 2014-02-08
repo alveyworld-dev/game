@@ -51,6 +51,8 @@ def init():
     game.alvey.jump_power       = 12
     game.alvey.speed            = 10
 
+    game.test_map = MapLoader.load("test.map")
+
 def main():
     """
     Main game initilization code

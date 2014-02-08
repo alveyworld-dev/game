@@ -99,4 +99,6 @@ def draw(fr,delayed):
     overlay.fill((0,0,0))          
     game.screen.blit(overlay, (0,0))
 
+    game.test_map.draw()
+
     return
