@@ -57,14 +57,16 @@ class Map:
         self.tiles = []
         self.camera_offset = 0
         self.finished = False
+        self.scrolling = False
 
     def draw(self):
         for tile in self.tiles:
             tile.draw()
 
     def update(self):
-        for tile in self.tiles:
-            tile.sprite.rect.x -= 1
+        if self.scrolling:
+            for tile in self.tiles:
+                tile.sprite.rect.x -= 1
 
     def collides_player(self):
         for tile in self.tiles:
@@ -104,8 +106,8 @@ class MapLoader:
                 for tile_x, tile in enumerate(line):
                     if not tile == '.' and not tile == '\n':
                         mT = Tile(tile,
-                            (MapLoader.tile_offset(tile_x),
-                            MapLoader.tile_offset(tile_y)))
+                                 (MapLoader.tile_offset(tile_x),
+                                  MapLoader.tile_offset(tile_y)))
                         retmap.add(mT)
 
         return retmap
