@@ -27,7 +27,7 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font              = pygame.font.Font("resources/main_font.ttf", 18)
+    game.main_font              = pygame.font.Font("resources/main_font.ttf", 24)
     
     # Set up the game world.  There should only be one of these
     game.world                  = World()
@@ -52,6 +52,7 @@ def init():
     game.alvey.speed            = 10
 
     game.test_map = MapLoader.load("test.map")
+    game.score = 0
 
 def main():
     """

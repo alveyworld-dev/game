@@ -66,6 +66,13 @@ def solveColors(fr,delayed):
         int((math.floor(colorList[2]), math.ceil(colorList[2]))[colorList[2]<=_B/2])
     )
 
+def draw_hud():
+    """
+    This is seperate mearly for simplicity
+    """
+
+    graphics.draw_text("Score: " + str(game.score), (255, 255, 255), (25, 25))
+
 def draw(fr,delayed):
     """
     Drawing logic
@@ -74,18 +81,6 @@ def draw(fr,delayed):
     # Draw background
     color_overlay = solveColors(float(fr),float(delayed))
     game.screen.fill(color_overlay)
-    
-    # Drawing a sprite called my_sprite
-    # my_sprite.draw()
-
-    # Draw some text
-    # graphics.draw_text("Hello World", (255, 255, 255), (50, 50))
-
-    # Draw the stars
-    # stars=Sprite(" ", (0,0))
-
-    # Draw the sun
-    # Sun=Sprite(" ", (0,0))
 
     game.world.draw()
 
@@ -100,5 +95,6 @@ def draw(fr,delayed):
     game.screen.blit(overlay, (0,0))
 
     game.test_map.draw()
+    draw_hud()
 
     return
