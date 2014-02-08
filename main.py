@@ -1,11 +1,12 @@
 #
 # Pygame Starter Kit
 # Copyright 2014, AlveyLabs Inc
-# 
+#
 # Version 0.2.4
-# 
+#
 
-import sys, pygame
+import sys
+import pygame
 from source import game
 from source.update import update
 from source.draw import draw
@@ -15,10 +16,12 @@ from source.world import World
 from source.jukebox import Jukebox
 from source.map import *
 
-clock=pygame.time.Clock()
+clock = pygame.time.Clock()
 
-# Set the framerate. This makes the game smoother, or at least Jarod's section of code
+# Set the framerate. This makes the game smoother, or at least Jarod's
+# section of code
 framerate = 60
+
 
 def init():
     """
@@ -27,32 +30,36 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font              = pygame.font.Font("resources/main_font.otf", 14)
-    
+    game.main_font = pygame.font.Font(
+        "resources/main_font.otf", 14)
+
     # Set up the game world.  There should only be one of these
-    game.world                  = World()
+    game.world = World()
     game.world.load()
     jukebox = Jukebox()
     jukebox.play()
-    
+
     # Player (Alvey)
-    game.alvey                  = Sprite("art_team/alveysprite.png", (125, 500))
+    game.alvey = Sprite(
+        "art_team/alveysprite.png", (125, 500))
     #game.alvey.left_sprite      = game.alvey.image
     #game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
-    game.alvey.left_sprite      = pygame.transform.flip(game.alvey.image, True, False)
+    game.alvey.left_sprite = pygame.transform.flip(
+        game.alvey.image, True, False)
     game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
-    game.alvey.dead             = False
-    game.alvey.direction        = 1
+    game.alvey.dead = False
+    game.alvey.direction = 1
     # Alveysprite physics
-    game.alvey.jumping          = None
-    game.alvey.ducking          = False
-    game.alvey.gravity          = .9
-    game.alvey.velocity         = 0
-    game.alvey.jump_power       = 12
-    game.alvey.speed            = 10
+    game.alvey.jumping = None
+    game.alvey.ducking = False
+    game.alvey.gravity = .9
+    game.alvey.velocity = 0
+    game.alvey.jump_power = 12
+    game.alvey.speed = 10
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0
+
 
 def main():
     """
@@ -70,16 +77,20 @@ def main():
 
     # Perform game loop
     while True:
-        timeDelayed=clock.tick(framerate)
+        timeDelayed = clock.tick(framerate)
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: sys.exit()
-            if event.type == pygame.KEYDOWN: keys.add(event.key)
-            if event.type == pygame.KEYUP: keys.discard(event.key)
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: sys.exit()
+            if event.type == pygame.QUIT:
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                keys.add(event.key)
+            if event.type == pygame.KEYUP:
+                keys.discard(event.key)
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                sys.exit()
 
         update(keys)        # update.py
-        draw(framerate,timeDelayed)              # draw.py
-        
+        draw(framerate, timeDelayed)              # draw.py
+
         # Simply flips the display for drawing
         pygame.display.update()
         pygame.display.flip()

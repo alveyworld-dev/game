@@ -1,6 +1,7 @@
 import pygame
 import game
 
+
 def draw_rect(size, color, position):
     """
     Draws a rectangle with style
@@ -15,6 +16,7 @@ def draw_rect(size, color, position):
 
     return
 
+
 def draw_text(text, color, position):
     """
     Draws text to the screen
@@ -24,7 +26,6 @@ def draw_text(text, color, position):
         color (255, 255, 255) rgb
         position (x, y)
     """
-    
+
     label = game.main_font.render(text, 1, color)
     game.screen.blit(label, position)
-    

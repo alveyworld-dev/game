@@ -1,8 +1,12 @@
-import pygame, sys, game
+import pygame
+import sys
+import game
 from sprite import Sprite
 from sound import Sound, Music
 
+
 class BackgroundLayer:
+
     """
     Encapsulates a scrolling layer of the background.  It will move left
     at a given speed, and loop once it exits the screen.  Multiple layers
@@ -18,7 +22,7 @@ class BackgroundLayer:
 
         self.filename = filename
         self.position = pos
-        self.speed    = scroll_speed
+        self.speed = scroll_speed
 
     def draw(self):
         self.s1.draw()
@@ -34,7 +38,9 @@ class BackgroundLayer:
             self.s1.rect.x = 0
             self.s2.rect.x = 1280
 
+
 class World:
+
     """
     World: encapsulates everything related to the world: time, children,
     background, drawing, etc.

@@ -1,6 +1,7 @@
 import pygame
 import game
 
+
 def update(keys):
     """
     Update game world here
@@ -15,10 +16,10 @@ def update(keys):
             game.alvey.jumping = True
             game.alvey.velocity -= game.alvey.jump_power
             game.alvey.rect.y += game.alvey.velocity
-        
+
         # Decay jump velocity
         if game.alvey.jumping:
-            speed = game.alvey.speed/2
+            speed = game.alvey.speed / 2
         else:
             speed = game.alvey.speed
 
@@ -32,15 +33,16 @@ def update(keys):
             game.alvey.direction = 1
         if key == pygame.K_DOWN:
             game.alvey.duck_sprite_rect = game.alvey.rect
-            game.alvey.image = pygame.image.load(game.rpath + "art_team/alveyduck.png").convert()
+            game.alvey.image = pygame.image.load(
+                game.rpath + "art_team/alveyduck.png").convert()
             game.alvey.ducking = True
 
     # Handle gravity
-    if game.alvey.rect.bottom >= game.window_size[1]*.95:
-        game.alvey.rect.bottom = game.window_size[1]*.95
+    if game.alvey.rect.bottom >= game.window_size[1] * .95:
+        game.alvey.rect.bottom = game.window_size[1] * .95
         game.alvey.jumping = False
         game.alvey.velocity = 0
-    if not game.alvey.rect.bottom == game.window_size[1]*.95:
+    if not game.alvey.rect.bottom == game.window_size[1] * .95:
         # Check if they are on a block or not
         if game.test_map.collides_player():
             game.alvey.jumping = False
