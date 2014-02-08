@@ -102,8 +102,10 @@ class MapLoader:
         with open(filename) as f:
             for tile_y, line in enumerate(f):
                 for tile_x, tile in enumerate(line):
-                    print(tile_x, tile_y, tile)
-
-            # lines = [line.split() for line in f]
+                    if not tile == '.' and not tile == '\n':
+                        mT = Tile(tile,
+                            (MapLoader.tile_offset(tile_x),
+                            MapLoader.tile_offset(tile_y)))
+                        retmap.add(mT)
 
         return retmap
