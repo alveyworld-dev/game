@@ -100,15 +100,10 @@ class MapLoader:
         retmap = Map()
 
         with open(filename) as f:
-            lines = [line.split() for line in f]
+            for tile_y, line in enumerate(f):
+                for tile_x, tile in enumerate(line):
+                    print(tile_x, tile_y, tile)
 
-        for tile_y, line in enumerate(lines):
-            for val in list(line):
-                for tile_x, char in enumerate(val):
-                    if char != '.':
-                        retmap.add(Tile(char,
-                                  (MapLoader.tile_offset(tile_x),
-                                   MapLoader.tile_offset(tile_y))))
-                        print(char, MapLoader.tile_offset(tile_x), MapLoader.tile_offset(tile_y))
+            # lines = [line.split() for line in f]
 
         return retmap
