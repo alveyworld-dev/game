@@ -57,7 +57,8 @@ def update(keys):
         print("boom. dead")
         game.alvey.dead = True
 
-    if game.alvey.rect.right >= 0:
-        game.alvey.rect.x -= 1
+    if game.test_map.scrolling:
+        if game.alvey.rect.right >= 0:
+            game.alvey.rect.x -= 1
 
     return

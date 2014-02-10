@@ -54,33 +54,31 @@ class Map:
     """
 
     def __init__(self):
-        self.tile_entities = []
+        self.tiles = []
         self.camera_offset = 0
         self.finished = False
+        self.scrolling = False
 
     def draw(self):
-        """
-        Draw all tile entities included in this map
-        """
-
-        for tile in self.tile_entities:
+        for tile in self.tiles:
             tile.draw()
 
     def update(self):
-        for tile in self.tile_entities:
-            tile.sprite.rect.x -= 1
+        if self.scrolling:
+            for tile in self.tiles:
+                tile.sprite.rect.x -= 1
 
     def collides_player(self):
-        for tile in self.tile_entities:
+        for tile in self.tiles:
             if tile.sprite.rect.colliderect(game.alvey.rect):
                 if tile.tile_type == 'f':
                     if not self.finished:
                         self.finished = True
-                    print("Level complete")
+                        print("Level complete")
                 return True
 
     def add(self, tile):
-        self.tile_entities.append(tile)
+        self.tiles.append(tile)
 
 
 class MapLoader:
@@ -100,19 +98,16 @@ class MapLoader:
         """
 
         filename = game.rpath + "map/" + filename
-        content = []
-
-        with open(filename) as f:
-            for i in range(os.stat(filename).st_size):
-                fct = f.read(1)
-                content.append(fct)
-
+        lines = []
         retmap = Map()
 
-        for idx, val in enumerate(content):
-            if val != '.':
-                retmap.add(
-                    Tile(val, ((32 * idx),
-                               MapLoader.tile_offset(19))))
+        with open(filename) as f:
+            for tile_y, line in enumerate(f):
+                for tile_x, tile in enumerate(line):
+                    if not tile == '.' and not tile == '\n':
+                        mT = Tile(tile,
+                                 (MapLoader.tile_offset(tile_x),
+                                  MapLoader.tile_offset(tile_y)))
+                        retmap.add(mT)
 
         return retmap
