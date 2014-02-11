@@ -31,11 +31,6 @@ def update(keys):
         if key == pygame.K_RIGHT:
             game.alvey.rect.x += speed
             game.alvey.direction = 1
-        if key == pygame.K_DOWN:
-            game.alvey.duck_sprite_rect = game.alvey.rect
-            game.alvey.image = pygame.image.load(
-                game.rpath + "art_team/alveyduck.png").convert()
-            game.alvey.ducking = True
 
     # Handle gravity
     if game.alvey.rect.bottom >= game.window_size[1] * .95:
