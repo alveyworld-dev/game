@@ -25,7 +25,7 @@ trees (E)
 bridge (B)
 
 --Jolly Jungle--
-tucan bird (E)
+toucan bird (E)
 monkey (E)
 grass (B)
 dirt (B)
