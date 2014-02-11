@@ -57,7 +57,7 @@ class Map:
         self.tiles = []
         self.camera_offset = 0
         self.finished = False
-        self.scrolling = False
+        self.scrolling = True
 
     def draw(self):
         for tile in self.tiles:
