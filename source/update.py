@@ -25,11 +25,11 @@ def update(keys):
 
         # Move left/right/down
         if key == pygame.K_LEFT:
-            game.alvey.rect.x -= speed
+            # game.alvey.rect.x -= speed
             game.alvey.left_sprite_rect = game.alvey.rect
             game.alvey.direction = -1
         if key == pygame.K_RIGHT:
-            game.alvey.rect.x += speed
+            # game.alvey.rect.x += speed
             game.alvey.direction = 1
 
     # Handle gravity
@@ -47,7 +47,7 @@ def update(keys):
     game.alvey.velocity += game.alvey.gravity
     game.alvey.rect.y += game.alvey.velocity
 
-    game.test_map.update()
+    game.test_map.update(game.alvey.direction)
 
     if game.alvey.rect.right <= 0 and game.alvey.dead == False:
         print("boom. dead")
