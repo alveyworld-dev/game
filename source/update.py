@@ -33,18 +33,19 @@ def update(keys):
             game.alvey.direction = 1
 
     # Handle gravity
-    if game.alvey.rect.bottom >= game.window_size[1] * .95:
-        game.alvey.rect.bottom = game.window_size[1] * .95
+    # if game.alvey.rect.bottom >= game.window_size[1] * .95:
+#         game.alvey.rect.bottom = game.window_size[1] * .95
+#         game.alvey.jumping = False
+#         game.alvey.velocity = 0
+#     if not game.alvey.rect.bottom == game.window_size[1] * .95:
+#         # Check if they are on a block or not
+    if game.test_map.collides_player():
         game.alvey.jumping = False
         game.alvey.velocity = 0
-    if not game.alvey.rect.bottom == game.window_size[1] * .95:
-        # Check if they are on a block or not
-        if game.test_map.collides_player():
-            game.alvey.jumping = False
-            game.alvey.velocity = 0
-        else:
-            game.alvey.velocity += game.alvey.gravity
-            game.alvey.rect.y += game.alvey.velocity
+    else:
+    	pass
+    game.alvey.velocity += game.alvey.gravity
+    game.alvey.rect.y += game.alvey.velocity
 
     game.test_map.update()
 
