@@ -132,7 +132,7 @@ def draw(fr, delayed):
 def draw_hud():
 >>>>>>> dc3fb600eb5f7cc404e35767926768075430a894
     """
-    This is seperate mearly for simplicity
+    This is seperate merely for simplicity
     """
 <<<<<<< HEAD
     # Draw background
