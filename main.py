@@ -13,7 +13,11 @@ from source.sprite import Sprite
 from source.sound import Sound, Music
 from source.world import World
 from source.jukebox import Jukebox
+import random
 clock=pygame.time.Clock()
+
+for i in range(100):
+    random.seed(random.randint(1,1000000000))
 
 # Set the framerate. This makes the game smoother, or at least Jarod's section of code
 framerate = 60
@@ -32,7 +36,15 @@ def init():
     game.world.load()
     jukebox = Jukebox()
     jukebox.play()
-    
+    game.sun=Sprite("sun-placeholder.png", (640,0))
+    game.darkOverlay = pygame.Surface(game.window_size).convert()
+
+    # Draw stars
+    game.starsList=[]
+    for i in range(random.randint(20,80)):
+        game.starsList.append([Sprite("Star.png",(0,0)),random.randint(1,720),random.randint(random.randint(1,360),360)])
+
+
     # Player (Alvey)
     game.alvey                  = Sprite("art_team/alveysprite.png", (125, 500))
     game.alvey.left_sprite      = pygame.image.load(game.rpath + "art_team/alveysprite.png")
