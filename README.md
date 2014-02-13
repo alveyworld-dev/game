@@ -12,6 +12,8 @@ Each team has a specific purpose, team leader, and members who are best in that 
 
 Not sure what team you're on?  Ask someone who knows, or [check here](https://github.com/alveyworld-dev/game/wiki/Team-Roster)
 
+**[Markdown](http://guides.github.com/overviews/mastering-markdown/)**
+
 ### Coding
 <table>
 <tr>

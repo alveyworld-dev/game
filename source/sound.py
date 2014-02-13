@@ -1,7 +1,9 @@
 import pygame
 import game
 
+
 class Sound():
+
     """
     Represents a sound effect
     """
@@ -15,15 +17,17 @@ class Sound():
     def stop(self):
         self.sound.stop()
 
+
 class Music():
+
     """
     Represents a song
     """
-    
+
     def __init__(self, filename):
         pygame.mixer.music.load(game.rpath + filename)
 
-    def play(self, loops = 0):
+    def play(self, loops=0):
         pygame.mixer.music.play(loops)
 
     def stop(self):
