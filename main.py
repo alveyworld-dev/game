@@ -1,102 +1,88 @@
-#
-# Pygame Starter Kit
-# Copyright 2014, AlveyLabs Inc
-#
-# Version 0.2.4
-#
+"""
+    My test for 2D platformer movement.
+    Here we have collision detection, smooth accelerated movement,
+    seperate world and window coordinates, and camera movement.
+"""
+
+import pygame
+from pygame.locals import *
+pygame.init()
 
 import sys
-import pygame
-from source import game
-from source.update import update
-from source.draw import draw
-from source.sprite import Sprite
-from source.sound import *
-from source.world import World
-from source.jukebox import Jukebox
-from source.map import *
+import time
 
-clock = pygame.time.Clock()
+from lib import (entities, 
+                camera, 
+                draw, 
+                level,
+                hud)
+ 
+class main():
+    # Screen Constants
+    FPS = 60
+    FPS_limit = True
+    WINDOWWIDTH = 800
+    WINDOWHEIGHT = 600
+    FLAGS = HWSURFACE|DOUBLEBUF
+    showText = False
+    
+    def play_game(self):
+        # Set up screen
+        self.screen = pygame.display.set_mode((self.WINDOWWIDTH, self.WINDOWHEIGHT), self.FLAGS)
+        pygame.display.set_caption('2D Platforming Test')
+        self.clock = pygame.time.Clock()
+        
+        # Set up objects
+        self.currentLevel = level.Level("lib/level_1.lvl")
+        self.player = entities.Player(self.currentLevel, (10, 9, 60, 90))
+        
+        # original speed settings for 30 FPS
+        if self.FPS == 30:
+            self.player.maxSpeed = 16
+            self.player.accel_amt = 3
+            self.player.airaccel_amt = 2
+            self.player.deaccel_amt = 10
+            self.player.fallAccel = 4
+            self.animation_speed = 0.015
+            
+        self.cameraObj = camera.Camera(self.player.rect, 
+                                       self.WINDOWWIDTH, 
+                                       self.WINDOWHEIGHT)
+        self.OSD_text = hud.OSD()
 
-# Set the framerate. This makes the game smoother, or at least Jarod's
-# section of code
-framerate = 60
+        # Game loop
+        while True:
+            self.keys = self.collect_input()
+            self.player.update(self.keys, self.currentLevel)
+            self.cameraObj.update(self.player.cameraRect, self.currentLevel)
+            self.OSD_text.update(self)
+           
+            draw.draw_level(self.screen, self.currentLevel, self.cameraObj)
+            draw.draw_entities(self.screen, (self.player,), self.cameraObj)
+            if self.showText:
+                draw.draw_OSD(self.screen, self.OSD_text.text)
 
-
-def init():
-    """
-    Perform game-wide initilization, such as setting variables and loading
-    resources
-    """
-
-    # Don't touch this unless you want to break everything
-    game.main_font = pygame.font.Font(
-        "resources/main_font.otf", 14)
-
-    # Set up the game world.  There should only be one of these
-    game.world = World()
-    game.world.load()
-    jukebox = Jukebox()
-    jukebox.play()
-
-    # Player (Alvey)
-    game.alvey = Sprite(
-        "art_team/alveysprite.png", (125, 500))
-    #game.alvey.left_sprite      = game.alvey.image
-    #game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
-    game.alvey.left_sprite = pygame.transform.flip(
-        game.alvey.image, True, False)
-    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
-    game.alvey.dead = False
-    game.alvey.direction = 1
-    # Alveysprite physics
-    game.alvey.jumping = None
-    game.alvey.ducking = False
-    game.alvey.gravity = .9
-    game.alvey.velocity = 0
-    game.alvey.jump_power = 12
-    game.alvey.speed = 10
-
-    game.test_map = MapLoader.load("Dakota.map")
-    game.score = 0
-
-
-def main():
-    """
-    Main game initilization code
-    """
-
-    # Set up pygame
-    pygame.init()
-    pygame.mixer.init()
-    game.screen = pygame.display.set_mode(game.window_size, pygame.DOUBLEBUF)
-    keys = set()
-
-    # Set up game
-    init()
-
-    # Perform game loop
-    while True:
-        timeDelayed = clock.tick(framerate)
+            pygame.display.update()
+            self.clock.tick(self.FPS)
+            
+    def collect_input(self):
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == QUIT or\
+            (event.type == KEYDOWN and event.key == K_ESCAPE):
+                pygame.quit()
                 sys.exit()
-            if event.type == pygame.KEYDOWN:
-                keys.add(event.key)
-            if event.type == pygame.KEYUP:
-                keys.discard(event.key)
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                sys.exit()
+            if event.type == KEYUP:
+                if event.key == K_x:
+                    self.showText = not self.showText
+                # repurposed the 'z' key to frame limit to 30 fps
+                if event.key == K_z:
+                    if self.FPS > 30:
+                        self.FPS = 30
+                    else:
+                        self.FPS = 60
 
-        update(keys)        # update.py
-        draw(framerate, timeDelayed)              # draw.py
+        keys = pygame.key.get_pressed()
+        return keys
 
-        # Simply flips the display for drawing
-        pygame.display.update()
-        pygame.display.flip()
-
-    return
-
-# Ignore this, it simply calls the main() function
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    main().play_game()
