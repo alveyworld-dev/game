@@ -1,9 +1,3 @@
-"""
-    My test for 2D platformer movement.
-    Here we have collision detection, smooth accelerated movement,
-    seperate world and window coordinates, and camera movement.
-"""
-
 import pygame
 from pygame.locals import *
 pygame.init()
@@ -12,29 +6,37 @@ import sys
 import time
 
 from lib import (entities,
-                camera,
-                draw,
-                level,
-                hud)
+                 camera,
+                 draw,
+                 level,
+                 hud,
+                 sound,
+                 jukebox)
+
 
 class main():
     # Screen Constants
     FPS = 60
     FPS_limit = True
     WINDOWWIDTH = 800
-    WINDOWHEIGHT = 600
-    FLAGS = HWSURFACE|DOUBLEBUF
+    WINDOWHEIGHT = 608  # Needs to be divisible by block size for best results
+    FLAGS = HWSURFACE | DOUBLEBUF
     showText = False
 
     def play_game(self):
         # Set up screen
-        self.screen = pygame.display.set_mode((self.WINDOWWIDTH, self.WINDOWHEIGHT), self.FLAGS)
+        self.screen = pygame.display.set_mode(
+            (self.WINDOWWIDTH, self.WINDOWHEIGHT), self.FLAGS)
         pygame.display.set_caption('2D Platforming Test')
         self.clock = pygame.time.Clock()
 
+        # Play music
+        background_music = jukebox.Jukebox()
+        background_music.play()
+
         # Set up objects
         self.currentLevel = level.Level("lib/level_1.lvl")
-        self.player = entities.Player(self.currentLevel, (10, 9, 60, 90))
+        self.player = entities.Player(self.currentLevel, (10, 9, 32, 64))
 
         # original speed settings for 30 FPS
         if self.FPS == 30:
@@ -68,7 +70,7 @@ class main():
     def collect_input(self):
         for event in pygame.event.get():
             if event.type == QUIT or\
-            (event.type == KEYDOWN and event.key == K_ESCAPE):
+                (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
             if event.type == KEYUP:
