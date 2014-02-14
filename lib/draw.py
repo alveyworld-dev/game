@@ -21,8 +21,7 @@ OSD_COLOR        = GREY
 
 FONTSIZE   = 20
 MAINFONT   = pygame.font.SysFont("Courier New", FONTSIZE)
-BACKGROUND = pygame.transform.scale(pygame.image.load("lib/background.png"), (800, 600))
-
+BACKGROUND = pygame.transform.scale(pygame.image.load("resources/world/background.png"), (800, 600))
 
 def drawText(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -52,11 +51,10 @@ def draw_level(surface, level, camera):
             if camera.colliderect(blockRect):
                 if level.collisionLayer[y][x] == level.blank:
                     continue
-                if level.collisionLayer[y][x] == level.block:
-                    surface.blit(level.blockSurf,
+                if level.collisionLayer[y][x] in level.tiles:
+                    surface.blit(level.tiles[level.collisionLayer[y][x]][0],
                                  ((x * level.blockWidth) - camera.left,
                                  (y * level.blockHeight) - camera.top,))
-
 
 def draw_entities(surface, sprites, camera):
     for sprite in sprites:

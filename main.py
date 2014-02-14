@@ -13,6 +13,8 @@ from lib import (entities,
                  sound,
                  jukebox)
 
+from lib.player import Player
+
 
 class main():
     # Screen Constants
@@ -36,7 +38,7 @@ class main():
 
         # Set up objects
         self.currentLevel = level.Level("lib/level_1.lvl")
-        self.player = entities.Player(self.currentLevel, (10, 9, 32, 64))
+        self.player = Player(self.currentLevel, (10, 9, 32, 64), self)
 
         # original speed settings for 30 FPS
         if self.FPS == 30:

@@ -24,6 +24,7 @@ class OSD():
                                        game.player.minYDistance),
                 'Level Coordinates: %r, %r' % (
                 game.player.get_coords(game.currentLevel)),
-                'FPS: %r' % (int(game.clock.get_fps()))]
+                'FPS: %r' % (int(game.clock.get_fps())),
+                'Health: %r' % game.player.health]
         except TypeError:
             self.text = ['ERROR']
