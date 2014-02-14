@@ -61,22 +61,16 @@ class Map:
         self.tiles = []
         self.camera_offset = 0
         self.finished = False
-        self.scrolling = False
+        self.scrolling = True
 
     def draw(self):
         for tile in self.tiles:
             tile.draw()
 
-    def update(self, direction):
+    def update(self):
         if self.scrolling:
             for tile in self.tiles:
                 tile.sprite.rect.x -= 1
-        if direction == 1:
-            for tile in self.tiles:
-                tile.sprite.rect.x -= 1
-        if direction == -1:
-            for tile in self.tiles:
-                tile.sprite.rect.x += 1
 
     def collides_player(self):
         for tile in self.tiles:
