@@ -31,6 +31,8 @@ def update(keys):
         if key == pygame.K_RIGHT:
             # game.alvey.rect.x += speed
             game.alvey.direction = 1
+        if key != pygame.K_LEFT and key != pygame.K_RIGHT:
+            game.alvey.direction = 0
 
     # Handle gravity
     # if game.alvey.rect.bottom >= game.window_size[1] * .95:
