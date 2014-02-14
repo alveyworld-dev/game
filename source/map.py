@@ -81,6 +81,7 @@ class Map:
                         print("Level complete")
                 return True
 
+
     def add(self, tile):
         self.tiles.append(tile)
 
