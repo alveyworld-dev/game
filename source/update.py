@@ -25,33 +25,29 @@ def update(keys):
 
         # Move left/right/down
         if key == pygame.K_LEFT:
-            game.alvey.rect.x -= speed
+            # game.alvey.rect.x -= speed
             game.alvey.left_sprite_rect = game.alvey.rect
             game.alvey.direction = -1
         if key == pygame.K_RIGHT:
-            game.alvey.rect.x += speed
+            # game.alvey.rect.x += speed
             game.alvey.direction = 1
-        if key == pygame.K_DOWN:
-            game.alvey.duck_sprite_rect = game.alvey.rect
-            game.alvey.image = pygame.image.load(
-                game.rpath + "art_team/alveyduck.png").convert()
-            game.alvey.ducking = True
 
     # Handle gravity
-    if game.alvey.rect.bottom >= game.window_size[1] * .95:
-        game.alvey.rect.bottom = game.window_size[1] * .95
+    # if game.alvey.rect.bottom >= game.window_size[1] * .95:
+#         game.alvey.rect.bottom = game.window_size[1] * .95
+#         game.alvey.jumping = False
+#         game.alvey.velocity = 0
+#     if not game.alvey.rect.bottom == game.window_size[1] * .95:
+#         # Check if they are on a block or not
+    if game.test_map.collides_player():
         game.alvey.jumping = False
         game.alvey.velocity = 0
-    if not game.alvey.rect.bottom == game.window_size[1] * .95:
-        # Check if they are on a block or not
-        if game.test_map.collides_player():
-            game.alvey.jumping = False
-            game.alvey.velocity = 0
-        else:
-            game.alvey.velocity += game.alvey.gravity
-            game.alvey.rect.y += game.alvey.velocity
+    else:
+    	pass
+    game.alvey.velocity += game.alvey.gravity
+    game.alvey.rect.y += game.alvey.velocity
 
-    game.test_map.update()
+    game.test_map.update(game.alvey.direction)
 
     if game.alvey.rect.right <= 0 and game.alvey.dead == False:
         print("boom. dead")
