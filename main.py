@@ -11,12 +11,12 @@ pygame.init()
 import sys
 import time
 
-from lib import (entities, 
-                camera, 
-                draw, 
+from lib import (entities,
+                camera,
+                draw,
                 level,
                 hud)
- 
+
 class main():
     # Screen Constants
     FPS = 60
@@ -25,17 +25,17 @@ class main():
     WINDOWHEIGHT = 600
     FLAGS = HWSURFACE|DOUBLEBUF
     showText = False
-    
+
     def play_game(self):
         # Set up screen
         self.screen = pygame.display.set_mode((self.WINDOWWIDTH, self.WINDOWHEIGHT), self.FLAGS)
         pygame.display.set_caption('2D Platforming Test')
         self.clock = pygame.time.Clock()
-        
+
         # Set up objects
         self.currentLevel = level.Level("lib/level_1.lvl")
         self.player = entities.Player(self.currentLevel, (10, 9, 60, 90))
-        
+
         # original speed settings for 30 FPS
         if self.FPS == 30:
             self.player.maxSpeed = 16
@@ -44,9 +44,9 @@ class main():
             self.player.deaccel_amt = 10
             self.player.fallAccel = 4
             self.animation_speed = 0.015
-            
-        self.cameraObj = camera.Camera(self.player.rect, 
-                                       self.WINDOWWIDTH, 
+
+        self.cameraObj = camera.Camera(self.player.rect,
+                                       self.WINDOWWIDTH,
                                        self.WINDOWHEIGHT)
         self.OSD_text = hud.OSD()
 
@@ -56,7 +56,7 @@ class main():
             self.player.update(self.keys, self.currentLevel)
             self.cameraObj.update(self.player.cameraRect, self.currentLevel)
             self.OSD_text.update(self)
-           
+
             draw.draw_level(self.screen, self.currentLevel, self.cameraObj)
             draw.draw_entities(self.screen, (self.player,), self.cameraObj)
             if self.showText:
@@ -64,7 +64,7 @@ class main():
 
             pygame.display.update()
             self.clock.tick(self.FPS)
-            
+
     def collect_input(self):
         for event in pygame.event.get():
             if event.type == QUIT or\
