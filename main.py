@@ -56,6 +56,7 @@ def init():
     game.alvey.velocity = 0
     game.alvey.jump_power = 12
     game.alvey.speed = 10
+    game.alvey.health = 100
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0
