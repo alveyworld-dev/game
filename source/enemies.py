@@ -17,6 +17,10 @@ class Enemy:
 
 		if (self.sprite.rect.right>=1280 and self.direction==False) or (self.direction==True and self.sprite.rect.left<=0):
 			self.direction=not self.direction
+	def damage(self):
+		if game.alvey.colliderect == True:
+			game.alvey.health -= 10
+
 
 
 

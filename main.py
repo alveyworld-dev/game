@@ -15,6 +15,7 @@ from source.sound import *
 from source.world import World
 from source.jukebox import Jukebox
 from source.map import *
+from source.enemies import Enemy
 
 clock = pygame.time.Clock()
 
@@ -61,6 +62,7 @@ def init():
     game.test_map = MapLoader.load("test.map")
     game.score = 0
 
+    game.test_enemy = Enemy()
 
 def main():
     """

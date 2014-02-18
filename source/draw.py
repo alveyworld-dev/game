@@ -107,4 +107,6 @@ def draw(fr, delayed):
     game.test_map.draw()
     draw_hud()
 
+    game.test_enemy.draw()
+    
     return
