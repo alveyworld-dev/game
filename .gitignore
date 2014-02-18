@@ -163,3 +163,11 @@ pip-log.txt
 .DS_Store
 
 .pf
+
+*.gif
+
+*.jpeg
+
+*.gif
+
+resources/testdeath-tile.gif
