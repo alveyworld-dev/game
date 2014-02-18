@@ -73,13 +73,22 @@ class Map:
                 tile.sprite.rect.x -= 1
 
     def collides_player(self):
+        print "collides_player()"
         for tile in self.tiles:
-            if tile.sprite.rect.colliderect(game.alvey.rect):
+            tiletop = tile.sprite.rect.copy()
+            tiletop.height = 5
+            #tiletop.bottom -= 5
+            alveybottom = game.alvey.rect.copy()
+            alveybottom.height = 5
+            alveybottom.bottom += 32
+            if alveybottom.colliderect(tiletop):
                 if tile.tile_type == 'f':
                     if not self.finished:
                         self.finished = True
                         print("Level complete")
                 return True
+            
+        return False
 
     def add(self, tile):
         self.tiles.append(tile)
