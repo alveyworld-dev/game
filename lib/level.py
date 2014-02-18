@@ -6,7 +6,7 @@ class Level(object):
     block       = 'b'
 
     tiles = {
-        'b': (pygame.image.load("resources/testblock-tile.gif"), "block"),
+        'b': (pygame.image.load("resources/testblock-tile.png"), "block"),
         'c': (pygame.image.load("resources/testclimb-tile.gif"), "climb"),
         'e': (pygame.image.load("resources/testenemy-tile.gif"), "enemy"),
         't': (pygame.image.load("resources/testtrap-tile.gif"), "trap"),
