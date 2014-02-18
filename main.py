@@ -55,7 +55,8 @@ def init():
     game.alvey.gravity = .4
     game.alvey.velocity = 0
     game.alvey.jump_power = 8
-    game.alvey.speed = 8
+    game.alvey.speed = 0
+    game.alvey.maxspeed = 8
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0
@@ -87,6 +88,9 @@ def main():
                 keys.discard(event.key)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 sys.exit()
+        #print 'velocity: ',game.alvey.velocity
+        #if game.alvey.velocity > 5:
+        #    game.alvey.velocity = 5
 
         update(keys)        # update.py
         draw(framerate, timeDelayed)              # draw.py

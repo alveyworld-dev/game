@@ -76,12 +76,59 @@ class Map:
         print "collides_player()"
         for tile in self.tiles:
             tiletop = tile.sprite.rect.copy()
+            tileleft = tile.sprite.rect.copy()
+            tileright = tile.sprite.rect.copy()
+            tilebottom = tile.sprite.rect.copy()
             tiletop.height = 5
-            #tiletop.bottom -= 5
-            alveybottom = game.alvey.rect.copy()
-            alveybottom.height = 5
-            alveybottom.bottom += 32
-            if alveybottom.colliderect(tiletop):
+            tiletop.width = 22
+            tiletop.left += 5
+            tileleft.width = 5
+            tileleft.height = 22
+            tileleft.bottom += 5
+            tilebottom.height = 5
+            tilebottom.bottom += 27
+            tilebottom.width = 20
+            tilebottom.left += 6
+            tileright.width = 5
+            tileright.left += 27
+            tileright.height = 22
+            tileright.bottom += 5
+            alveytile = game.alvey.rect.copy()
+            alveytile.height = 25
+            alveytile.bottom += 7
+            if alveytile.colliderect(tileleft):
+                print "LEFTHIT"
+                game.alvey.speed = 0
+                
+                game.alvey.rect.right = tile.sprite.rect.left-1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
+                
+            if alveytile.colliderect(tileright):
+                print " RIGHTHIT"
+                game.alvey.speed = 0
+                game.alvey.rect.left = tile.sprite.rect.right+1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
+                
+            if game.alvey.rect.colliderect(tilebottom):
+                print "BOTTOMHIT"
+                game.alvey.speed = 0
+                game.alvey.rect.top = tile.sprite.rect.bottom+1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
+
+            if alveytile.colliderect(tiletop):
+                print "TOPHIT"
+                #game.alvey.speed = game.alvey.maxspeed/2
+                game.alvey.velocity = 0
+                game.alvey.rect.bottom = tile.sprite.rect.top+1
                 if tile.tile_type == 'f':
                     if not self.finished:
                         self.finished = True
