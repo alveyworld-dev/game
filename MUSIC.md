@@ -19,3 +19,11 @@ Anyone who slacks off or isn't working will be put into another group or they wi
 ALSO, if you'd like to have your music put into the game, PLEASE put it onto github under the resources folder and commit the file.
 
 Remember: I WILL be listening to every song you e-mail/ put onto the resources folder, so do your best, and have fun with your musical talents.
+
+# EDIT
+
+ We need more sounds. There have been a disturbing lack of sound. We need them. Do not go into the dog park. Do not look at the hooded figures in the dog park for any number of time. All hail the glow cloud. 
+ 
+- For those who are lazy, here is a link to a sound making website.
+- http://www.bfxr.net/
+- We need sounds for enemies, projectiles, death sounds, jump sounds, etc.
