@@ -10,3 +10,7 @@ alveyworldgameart@gmail.com
 - Right now, the biggest thing we need in the art department is concept for enemies based on the levels, Please check out the levels list and make your enemies in photoshop.  Please include the level they're supposed to be in along with the file, or somewhere inside. Thank you.
 
   (Dome fossil 5ever)
+
+### EDIT 2 ELECTRIC BOOGALOO
+# WE NEED BOSS CONCEPTS BASED ON THE LEVELS (WOULD NOT MAKE SENSE IF A BANANA WAS THE BOSS OF A MOUNTAIN LEVEL)
+  - Xam5698
