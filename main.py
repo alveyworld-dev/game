@@ -54,7 +54,7 @@ def init():
     game.alvey.ducking = False
     game.alvey.gravity = .9
     game.alvey.velocity = 0
-    game.alvey.jump_power = 12
+    game.alvey.jump_power = 13
     game.alvey.speed = 10
     game.alvey.health = 100
 
