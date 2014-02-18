@@ -5,3 +5,8 @@ Ahoy, If you're reading this, You're either apart of the Art team in alvey world
 ###HUMANS WE HAVE A GMAIL NOW. EMAIL US YOUR ART THINGIES AND WE WILL CONSIDER YOU TO NOT BE FED TO THE LASER SHARKS
 ###ALSO PUT IT UP ON ZE GITHUB
 alveyworldgameart@gmail.com
+
+# EDIT
+- Right now, the biggest thing we need in the art department is concept for enemies based on the levels, Please check out the levels list and make your enemies in photoshop.  Please include the level they're supposed to be in along with the file, or somewhere inside. Thank you.
+
+  (Dome fossil 5ever)
