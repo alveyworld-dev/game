@@ -40,23 +40,27 @@ def init():
     jukebox.play()
 
     # Player (Alvey)
-    game.alvey = Sprite(
-        "art_team/alveysprite.png", (125, 500))
-    #game.alvey.left_sprite      = game.alvey.image
-    #game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
-    game.alvey.left_sprite = pygame.transform.flip(
-        game.alvey.image, True, False)
-    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
+    game.standing = pygame.Rect(0,0,20,63)
+    game.standingl = pygame.Rect(70,0,20,63) 
+    game.walking = pygame.Rect(20,2,24,60)
+    game.walkingl = pygame.Rect(44,2,24,60)
+    game.crouching = pygame.Rect(0,64,45,33)
+    game.alvey = Sprite("art_team/alveyspritesheet.png", (125, 500), game.standing)
+    #game.alvey.rect = game.alvey.area
     game.alvey.dead = False
     game.alvey.direction = 1
+    game.alvey.is_down = False
+    
     # Alveysprite physics
     game.alvey.jumping = None
     game.alvey.ducking = False
-    game.alvey.gravity = .4
+    game.alvey.gravity = .8
     game.alvey.velocity = 0
-    game.alvey.jump_power = 8
+    game.alvey.jump_power = 12
     game.alvey.speed = 0
+    game.alvey.speed_power = 20 #percent
     game.alvey.maxspeed = 8
+    game.alvey.minspeed = 3
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0

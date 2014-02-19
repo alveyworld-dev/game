@@ -94,11 +94,8 @@ def draw(fr, delayed):
 
     game.world.draw()
 
-    if game.alvey.direction == 1:
-        game.alvey.draw()
-    else:
-        game.screen.blit(game.alvey.left_sprite, game.alvey.left_sprite_rect)
-
+    game.alvey.draw()
+    
     overlay = pygame.Surface(game.window_size).convert()
     overlay.set_alpha(colorList[4])
     overlay.fill((0, 0, 0))
