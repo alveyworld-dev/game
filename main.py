@@ -58,7 +58,7 @@ def init():
     game.alvey.velocity = 0
     game.alvey.jump_high = 20
     game.alvey.jump_low = game.alvey.jump_power = 8
-    game.alvey.speed = game.alvey.speed_slow = 2
+    game.alvey.speed = game.alvey.speed_slow = 8
     game.alvey.speed_fast = 8
     
 

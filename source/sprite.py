@@ -11,7 +11,7 @@ class Sprite(pygame.sprite.Sprite):
         self.rect.x = position[0]
         self.rect.y = position[1]
         if area:
-            self.rect.width = area.width
+            self.rect.width  = area.width
             self.rect.height = area.height
         self.area = area
 
