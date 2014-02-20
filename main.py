@@ -52,10 +52,10 @@ def init():
     # Alveysprite physics
     game.alvey.jumping = None
     game.alvey.ducking = False
-    game.alvey.gravity = .9
+    game.alvey.gravity = .4
     game.alvey.velocity = 0
-    game.alvey.jump_power = 12
-    game.alvey.speed = 10
+    game.alvey.jump_power = 8
+    game.alvey.speed = 8
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0
