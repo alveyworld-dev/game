@@ -63,7 +63,7 @@ def init():
     game.alvey.speed_fast = 8
     
 
-    game.test_map = MapLoader.load("test.map")
+    game.test_map = MapLoader.load("test3.map")
     game.score = 0
 
 
