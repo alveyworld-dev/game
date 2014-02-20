@@ -57,10 +57,10 @@ def init():
     game.alvey.ducking = False
     game.alvey.gravity = .8
     game.alvey.velocity = 0
-    game.alvey.jump_high = 20
+    game.alvey.jump_high = 15
     game.alvey.jump_low = game.alvey.jump_power = 8
     game.alvey.speed = game.alvey.speed_slow = 8
-    game.alvey.speed_fast = 8
+    game.alvey.speed_fast = 10
     
 
     game.test_map = MapLoader.load("test3.map")

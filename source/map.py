@@ -139,6 +139,7 @@ class Map:
                     if not self.finished:
                         self.finished = True
                         print("Level complete")
+
                 #pygame.display.flip()
                 return True
             
