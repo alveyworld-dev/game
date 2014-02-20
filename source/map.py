@@ -13,11 +13,11 @@ class TileType:
 
     def __init__(self):
         self.tiles = {
-            'b': ("testblock-tile.gif", "block"),
+            'b': ("grass-tile.png", "block"),
             'c': ("testclimb-tile.gif", "climb"),
             'e': ("testenemy-tile.gif", "enemy"),
             't': ("testtrap-tile.gif", "trap"),
-            'x': ("testdeath-tile.gif", "death"),
+            'x': ("sand-tile.png", "death"),
             'r': ("testride-tile.gif", "ride"),
             'p': ("testpowerup-tile.gif", "powerup"),
             'f': ("finished-tile.png", "finished")

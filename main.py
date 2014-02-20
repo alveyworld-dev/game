@@ -50,16 +50,17 @@ def init():
     game.alvey.direction = 1
     game.alvey.is_down = False
     game.alvey.toggle = 0
+    game.alvey.jump = Sound("Sound/jump.wav")
     
     # Alveysprite physics
     game.alvey.jumping = None
     game.alvey.ducking = False
     game.alvey.gravity = .8
     game.alvey.velocity = 0
-    game.alvey.jump_high = 12
+    game.alvey.jump_high = 20
     game.alvey.jump_low = game.alvey.jump_power = 8
-    game.alvey.speed = game.alvey.speed_slow = 2
-    game.alvey.speed_fast = 5
+    game.alvey.speed = game.alvey.speed_slow = 8
+    game.alvey.speed_fast = 8
     
 
     game.test_map = MapLoader.load("test.map")

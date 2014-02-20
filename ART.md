@@ -6,6 +6,12 @@ Ahoy, If you're reading this, You're either apart of the Art team in alvey world
 ###ALSO PUT IT UP ON ZE GITHUB
 alveyworldgameart@gmail.com
 
+## Things Alvey can Do
+* Run
+* Crouch
+* Jump
+* Powerjump (will prbably be a powerup)
+
 # EDIT
 - Right now, the biggest thing we need in the art department is concept for enemies based on the levels, Please check out the levels list and make your enemies in photoshop.  Please include the level they're supposed to be in along with the file, or somewhere inside. Thank you.
 
