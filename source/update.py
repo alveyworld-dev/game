@@ -17,7 +17,7 @@ def update(keys):
         
     if (len(keys)==0 or not pygame.K_SPACE in keys) and game.alvey.speed >= game.alvey.minspeed:
             game.alvey.speed -= (game.alvey.speed_power/100. * game.alvey.speed)*.7
-            print (game.alvey.speed_power/100. * game.alvey.speed)*.7, game.alvey.speed
+            #print (game.alvey.speed_power/100. * game.alvey.speed)*.7, game.alvey.speed
         
     for key in keys:
         # Perform jump
@@ -70,7 +70,14 @@ def update(keys):
         game.alvey.jumping = False
         game.alvey.velocity = 0
     else:
-        game.alvey.velocity += game.alvey.gravity
+        print "Velocity: ", game.alvey.velocity
+        if game.alvey.velocity > 0:
+            game.alvey.velocity += game.alvey.gravity
+            if not pygame.K_RIGHT in keys and not pygame.K_LEFT in keys:
+                game.alvey.velocity += game.alvey.gravity
+        else:
+            game.alvey.velocity += game.alvey.gravity
+
         if game.alvey.velocity > 3:
             for i in range(int(game.alvey.velocity)):
                 #print "y: ", game.alvey.rect.y
