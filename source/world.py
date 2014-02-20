@@ -67,7 +67,7 @@ class World:
             BackgroundLayer("world/clouds.png", 3, 0),
 
             # Ground
-            BackgroundLayer("world/test_bg_4.png", 2, 0)
+            # BackgroundLayer("world/test_bg_4.png", 2, 0)
         ]
 
     def update(self):
