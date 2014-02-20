@@ -15,7 +15,6 @@ from source.sound import *
 from source.world import World
 from source.jukebox import Jukebox
 from source.map import *
-from source.enemies import Enemy
 
 clock = pygame.time.Clock()
 
@@ -31,8 +30,7 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font = pygame.font.Font(
-        "resources/main_font.otf", 14)
+    game.main_font = pygame.font.Font("resources/main_font.otf", 14)
 
     # Set up the game world.  There should only be one of these
     game.world = World()
@@ -41,28 +39,32 @@ def init():
     jukebox.play()
 
     # Player (Alvey)
-    game.alvey = Sprite(
-        "art_team/alveysprite.png", (125, 500))
-    #game.alvey.left_sprite      = game.alvey.image
-    #game.alvey.left_sprite      = pygame.transform.flip(game.alvey.left_sprite, True, False)
-    game.alvey.left_sprite = pygame.transform.flip(
-        game.alvey.image, True, False)
-    game.alvey.left_sprite_rect = game.alvey.left_sprite.get_rect()
+    game.standing = pygame.Rect(0,0,20,63)
+    game.standingl = pygame.Rect(70,0,20,63) 
+    game.walking = [pygame.Rect(20,2,24,60),pygame.Rect(0,0,20,63)]
+    game.walkingl = [pygame.Rect(44,2,24,60),pygame.Rect(70,0,20,63)]
+    game.crouching = pygame.Rect(0,64,45,33)
+    game.alvey = Sprite("art_team/alveyspritesheet.png", (125, 500), game.standing)
+    #game.alvey.rect = game.alvey.area
     game.alvey.dead = False
     game.alvey.direction = 1
+    game.alvey.is_down = False
+    game.alvey.toggle = 0
+    
     # Alveysprite physics
     game.alvey.jumping = None
     game.alvey.ducking = False
-    game.alvey.gravity = .9
+    game.alvey.gravity = .8
     game.alvey.velocity = 0
-    game.alvey.jump_power = 13
-    game.alvey.speed = 10
-    game.alvey.health = 100
+    game.alvey.jump_high = 12
+    game.alvey.jump_low = game.alvey.jump_power = 8
+    game.alvey.speed = game.alvey.speed_slow = 2
+    game.alvey.speed_fast = 5
+    
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0
 
-    game.test_enemy = Enemy()
 
 def main():
     """
@@ -90,6 +92,9 @@ def main():
                 keys.discard(event.key)
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 sys.exit()
+        #print 'velocity: ',game.alvey.velocity
+        #if game.alvey.velocity > 5:
+        #    game.alvey.velocity = 5
 
         update(keys)        # update.py
         draw(framerate, timeDelayed)              # draw.py

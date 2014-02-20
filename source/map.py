@@ -73,14 +73,76 @@ class Map:
                 tile.sprite.rect.x -= 1
 
     def collides_player(self):
+        #print "collides_player()"
         for tile in self.tiles:
-            if tile.sprite.rect.colliderect(game.alvey.rect):
+            tiletop = tile.sprite.rect.copy()
+            tileleft = tile.sprite.rect.copy()
+            tileright = tile.sprite.rect.copy()
+            tilebottom = tile.sprite.rect.copy()
+            tiletop.height = 5
+            tiletop.width = 22
+            tiletop.left += 5
+            tileleft.width = 5
+            tileleft.height = 22
+            tileleft.bottom += 5
+            
+            tilebottom.height = 5
+            tilebottom.bottom += 27
+            tilebottom.width = 20
+            tilebottom.left += 6
+            tileright.width = 5
+            tileright.left += 27
+            tileright.height = 22
+            tileright.bottom += 5
+            alveytile = game.alvey.rect.copy()
+            alveytile.width = alveytile.width - 6
+            alveytile.left += 3
+            alveytile.height = game.alvey.rect.height-7
+            alveytile.bottom += 7
+
+            #pygame.draw.rect(game.screen, 0xFF0000, tiletop)
+            #pygame.draw.rect(game.screen, 0x00FF00, tilebottom)
+            #pygame.draw.rect(game.screen, 0x0000FF, tileleft)
+            #pygame.draw.rect(game.screen, 0xFFFF00, tileright)
+            #pygame.draw.rect(game.screen, 0x00FFFF, alveytile)
+
+            if alveytile.colliderect(tileleft):
+                #print "LEFTHIT"
+                game.alvey.rect.right = tile.sprite.rect.left-1
                 if tile.tile_type == 'f':
                     if not self.finished:
                         self.finished = True
                         print("Level complete")
-                return True
+                
+            elif alveytile.colliderect(tileright):
+                #print " RIGHTHIT"
+                game.alvey.rect.left = tile.sprite.rect.right+1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
+                
+            elif game.alvey.rect.colliderect(tilebottom):
+                #print "BOTTOMHIT"
+                game.alvey.rect.top = tile.sprite.rect.bottom+1
+                game.alvey.velocity *= -1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
 
+            elif alveytile.colliderect(tiletop):
+                #print "TOPHIT"
+                game.alvey.velocity = 0
+                game.alvey.rect.bottom = tile.sprite.rect.top+1
+                if tile.tile_type == 'f':
+                    if not self.finished:
+                        self.finished = True
+                        print("Level complete")
+                #pygame.display.flip()
+                return True
+            
+        return False
 
     def add(self, tile):
         self.tiles.append(tile)

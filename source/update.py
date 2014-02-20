@@ -10,45 +10,90 @@ def update(keys):
     game.world.update()
 
     # Handle input
+    if pygame.K_DOWN in keys:
+        game.alvey.is_down = True
+    else:
+        game.alvey.is_down = False
+
+    #running man!
+    if (pygame.K_LEFT in keys or pygame.K_RIGHT in keys):
+        game.alvey.toggle += 1
+        if game.alvey.toggle % 5:
+            game.alvey.toggle += 1
+
+    
     for key in keys:
         # Perform jump
-        if key == pygame.K_UP and game.alvey.jumping == False:
+        if key == pygame.K_SPACE and game.alvey.jumping == False:
+            if not game.alvey.is_down:
+                game.alvey.change_costume(game.standing)
             game.alvey.jumping = True
+            if pygame.K_b in keys and (pygame.K_LEFT in keys or pygame.K_RIGHT in keys):
+                game.alvey.jump_power = game.alvey.jump_high
+            else:
+                game.alvey.jump_power = game.alvey.jump_low
+           
             game.alvey.velocity -= game.alvey.jump_power
             game.alvey.rect.y += game.alvey.velocity
-
-        # Decay jump velocity
-        if game.alvey.jumping:
-            speed = game.alvey.speed / 2
-        else:
-            speed = game.alvey.speed
+        
+        if key == pygame.K_DOWN and game.alvey.jumping == True:
+            if not game.test_map.collides_player():
+                game.alvey.velocity += game.alvey.gravity
+            game.alvey.rect.y += game.alvey.velocity
+        elif key == pygame.K_DOWN:
+            game.alvey.change_costume(game.crouching)
+            if not game.test_map.collides_player():
+                game.alvey.velocity += game.alvey.gravity
+            game.alvey.rect.y += game.alvey.velocity
 
         # Move left/right/down
         if key == pygame.K_LEFT:
-            game.alvey.rect.x -= speed
-            game.alvey.left_sprite_rect = game.alvey.rect
+            
+            if not game.alvey.is_down:
+                costumes = len(game.walkingl)
+                game.alvey.change_costume(game.walkingl[game.alvey.toggle%costumes])
+            if pygame.K_b in keys:
+                game.alvey.speed = game.alvey.speed_fast
+            else:
+                game.alvey.speed = game.alvey.speed_slow
+            game.alvey.rect.x -= game.alvey.speed
             game.alvey.direction = -1
-        if key == pygame.K_RIGHT:
-            game.alvey.rect.x += speed
+        elif key == pygame.K_RIGHT:
+            
+            if not game.alvey.is_down:
+                costumes = len(game.walking)
+                game.alvey.change_costume(game.walking[game.alvey.toggle%costumes])
+            if pygame.K_b in keys:
+                game.alvey.speed = game.alvey.speed_fast
+            else:
+                game.alvey.speed = game.alvey.speed_slow
+            game.alvey.rect.x += game.alvey.speed
             game.alvey.direction = 1
-        if key == pygame.K_DOWN:
-            game.alvey.duck_sprite_rect = game.alvey.rect
-            game.alvey.image = pygame.image.load(
-                game.rpath + "art_team/alveyduck.png").convert()
-            game.alvey.ducking = True
+        
+    
+        
 
     # Handle gravity
-    if game.alvey.rect.bottom >= game.window_size[1] * .95:
-        game.alvey.rect.bottom = game.window_size[1] * .95
+
+    if game.test_map.collides_player():
         game.alvey.jumping = False
         game.alvey.velocity = 0
-    if not game.alvey.rect.bottom == game.window_size[1] * .95:
-        # Check if they are on a block or not
-        if game.test_map.collides_player():
-            game.alvey.jumping = False
-            game.alvey.velocity = 0
+    else:
+        #print "Velocity: ", game.alvey.velocity
+        if game.alvey.velocity > 0:
+            game.alvey.velocity += game.alvey.gravity
+            if not pygame.K_RIGHT in keys and not pygame.K_LEFT in keys:
+                game.alvey.velocity += game.alvey.gravity
         else:
             game.alvey.velocity += game.alvey.gravity
+
+        if game.alvey.velocity > 3:
+            for i in range(int(game.alvey.velocity)):
+                #print "y: ", game.alvey.rect.y
+                game.alvey.rect.y += 1
+                if game.test_map.collides_player():
+                    game.alvey.velocity = -5
+        else:
             game.alvey.rect.y += game.alvey.velocity
 
     game.test_map.update()
