@@ -50,6 +50,7 @@ def init():
     game.alvey.direction = 1
     game.alvey.is_down = False
     game.alvey.toggle = 0
+    game.alvey.jump = Sound("Sound/jump.wav")
     
     # Alveysprite physics
     game.alvey.jumping = None

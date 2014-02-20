@@ -28,6 +28,7 @@ def update(keys):
             if not game.alvey.is_down:
                 game.alvey.change_costume(game.standing)
             game.alvey.jumping = True
+            game.alvey.jump.play()
             if pygame.K_b in keys and (pygame.K_LEFT in keys or pygame.K_RIGHT in keys):
                 game.alvey.jump_power = game.alvey.jump_high
             else:
