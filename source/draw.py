@@ -96,12 +96,13 @@ def draw(fr, delayed):
 
     game.alvey.draw()
     
+    game.test_map.draw()
+
     overlay = pygame.Surface(game.window_size).convert()
     overlay.set_alpha(colorList[4])
     overlay.fill((0, 0, 0))
     game.screen.blit(overlay, (0, 0))
 
-    game.test_map.draw()
     draw_hud()
 
     return
