@@ -42,14 +42,15 @@ def init():
     # Player (Alvey)
     game.standing = pygame.Rect(0,0,20,63)
     game.standingl = pygame.Rect(70,0,20,63) 
-    game.walking = pygame.Rect(20,2,24,60)
-    game.walkingl = pygame.Rect(44,2,24,60)
+    game.walking = [pygame.Rect(20,2,24,60),pygame.Rect(0,0,20,63)]
+    game.walkingl = [pygame.Rect(44,2,24,60),pygame.Rect(70,0,20,63)]
     game.crouching = pygame.Rect(0,64,45,33)
     game.alvey = Sprite("art_team/alveyspritesheet.png", (125, 500), game.standing)
     #game.alvey.rect = game.alvey.area
     game.alvey.dead = False
     game.alvey.direction = 1
     game.alvey.is_down = False
+    game.alvey.toggle = 0
     
     # Alveysprite physics
     game.alvey.jumping = None

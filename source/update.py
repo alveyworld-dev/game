@@ -14,7 +14,10 @@ def update(keys):
         game.alvey.is_down = True
     else:
         game.alvey.is_down = False
-        
+
+    if (pygame.K_LEFT in keys or pygame.K_RIGHT in keys) and len(keys)==1:
+        game.alvey.toggle += 1
+
     if (len(keys)==0 or not pygame.K_SPACE in keys) and game.alvey.speed >= game.alvey.minspeed:
             game.alvey.speed -= (game.alvey.speed_power/100. * game.alvey.speed)*.7
             #print (game.alvey.speed_power/100. * game.alvey.speed)*.7, game.alvey.speed
@@ -42,7 +45,8 @@ def update(keys):
         if key == pygame.K_LEFT:
             
             if not game.alvey.is_down:
-                game.alvey.change_costume(game.standingl)
+                costumes = len(game.walkingl)
+                game.alvey.change_costume(game.walkingl[game.alvey.toggle%costumes])
             if not game.alvey.jumping:
                 game.alvey.speed += game.alvey.speed_power/100. * (game.alvey.speed + 1)
             else:
@@ -52,7 +56,8 @@ def update(keys):
         elif key == pygame.K_RIGHT:
             
             if not game.alvey.is_down:
-                game.alvey.change_costume(game.standing)
+                costumes = len(game.walking)
+                game.alvey.change_costume(game.walking[game.alvey.toggle%costumes])
             if not game.alvey.jumping:
                 game.alvey.speed += game.alvey.speed_power/100. * (game.alvey.speed + 1)
             else:
