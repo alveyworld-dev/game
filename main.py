@@ -30,8 +30,7 @@ def init():
     """
 
     # Don't touch this unless you want to break everything
-    game.main_font = pygame.font.Font(
-        "resources/main_font.otf", 14)
+    game.main_font = pygame.font.Font("resources/main_font.otf", 14)
 
     # Set up the game world.  There should only be one of these
     game.world = World()
@@ -57,11 +56,11 @@ def init():
     game.alvey.ducking = False
     game.alvey.gravity = .8
     game.alvey.velocity = 0
-    game.alvey.jump_power = 12
-    game.alvey.speed = 0
-    game.alvey.speed_power = 20 #percent
-    game.alvey.maxspeed = 8
-    game.alvey.minspeed = 3
+    game.alvey.jump_high = 12
+    game.alvey.jump_low = game.alvey.jump_power = 8
+    game.alvey.speed = game.alvey.speed_slow = 2
+    game.alvey.speed_fast = 5
+    
 
     game.test_map = MapLoader.load("test.map")
     game.score = 0

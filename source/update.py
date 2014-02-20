@@ -15,30 +15,35 @@ def update(keys):
     else:
         game.alvey.is_down = False
 
-    if (pygame.K_LEFT in keys or pygame.K_RIGHT in keys) and len(keys)==1:
+    #running man!
+    if (pygame.K_LEFT in keys or pygame.K_RIGHT in keys):
         game.alvey.toggle += 1
+        if game.alvey.toggle % 5:
+            game.alvey.toggle += 1
 
-    if (len(keys)==0 or not pygame.K_SPACE in keys) and game.alvey.speed >= game.alvey.minspeed:
-            game.alvey.speed -= (game.alvey.speed_power/100. * game.alvey.speed)*.7
-            #print (game.alvey.speed_power/100. * game.alvey.speed)*.7, game.alvey.speed
-        
+    
     for key in keys:
         # Perform jump
         if key == pygame.K_SPACE and game.alvey.jumping == False:
             if not game.alvey.is_down:
                 game.alvey.change_costume(game.standing)
             game.alvey.jumping = True
+            if pygame.K_b in keys and (pygame.K_LEFT in keys or pygame.K_RIGHT in keys):
+                game.alvey.jump_power = game.alvey.jump_high
+            else:
+                game.alvey.jump_power = game.alvey.jump_low
+           
             game.alvey.velocity -= game.alvey.jump_power
             game.alvey.rect.y += game.alvey.velocity
         
         if key == pygame.K_DOWN and game.alvey.jumping == True:
             if not game.test_map.collides_player():
-                game.alvey.velocity += .5
+                game.alvey.velocity += game.alvey.gravity
             game.alvey.rect.y += game.alvey.velocity
         elif key == pygame.K_DOWN:
             game.alvey.change_costume(game.crouching)
             if not game.test_map.collides_player():
-                game.alvey.velocity += .5
+                game.alvey.velocity += game.alvey.gravity
             game.alvey.rect.y += game.alvey.velocity
 
         # Move left/right/down
@@ -47,26 +52,25 @@ def update(keys):
             if not game.alvey.is_down:
                 costumes = len(game.walkingl)
                 game.alvey.change_costume(game.walkingl[game.alvey.toggle%costumes])
-            if not game.alvey.jumping:
-                game.alvey.speed += game.alvey.speed_power/100. * (game.alvey.speed + 1)
+            if pygame.K_b in keys:
+                game.alvey.speed = game.alvey.speed_fast
             else:
-                game.alvey.speed = max(game.alvey.maxspeed/2, game.alvey.speed)
-            game.alvey.rect.x -= min(game.alvey.speed,game.alvey.maxspeed)
+                game.alvey.speed = game.alvey.speed_slow
+            game.alvey.rect.x -= game.alvey.speed
             game.alvey.direction = -1
         elif key == pygame.K_RIGHT:
             
             if not game.alvey.is_down:
                 costumes = len(game.walking)
                 game.alvey.change_costume(game.walking[game.alvey.toggle%costumes])
-            if not game.alvey.jumping:
-                game.alvey.speed += game.alvey.speed_power/100. * (game.alvey.speed + 1)
+            if pygame.K_b in keys:
+                game.alvey.speed = game.alvey.speed_fast
             else:
-                game.alvey.speed = max(game.alvey.maxspeed/2, game.alvey.speed)
-            game.alvey.rect.x += min(game.alvey.speed,game.alvey.maxspeed)
+                game.alvey.speed = game.alvey.speed_slow
+            game.alvey.rect.x += game.alvey.speed
             game.alvey.direction = 1
         
     
-        #Degrad speed 
         
 
     # Handle gravity
@@ -75,7 +79,7 @@ def update(keys):
         game.alvey.jumping = False
         game.alvey.velocity = 0
     else:
-        print "Velocity: ", game.alvey.velocity
+        #print "Velocity: ", game.alvey.velocity
         if game.alvey.velocity > 0:
             game.alvey.velocity += game.alvey.gravity
             if not pygame.K_RIGHT in keys and not pygame.K_LEFT in keys:
