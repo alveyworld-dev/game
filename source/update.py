@@ -21,7 +21,7 @@ def update(keys):
         if game.alvey.toggle % 5:
             game.alvey.toggle += 1
 
-    
+    moved=0
     for key in keys:
         # Perform jump
         if key == pygame.K_SPACE and game.alvey.jumping == False:
@@ -56,7 +56,8 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            game.alvey.rect.x -= game.alvey.speed
+            #game.alvey.rect.x -= game.alvey.speed
+            moved-=game.alvey.speed
             game.alvey.direction = -1
         elif key == pygame.K_RIGHT:
             
@@ -67,9 +68,10 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            game.alvey.rect.x += game.alvey.speed
+            #game.alvey.rect.x += game.alvey.speed
+            moved+=game.alvey.speed
             game.alvey.direction = 1
-        
+    game.alvey.rect.x=100-game.alvey.rect.width
     
         
 
@@ -78,6 +80,7 @@ def update(keys):
     if game.test_map.collides_player():
         game.alvey.jumping = False
         game.alvey.velocity = 0
+        moved=0
     else:
         #print "Velocity: ", game.alvey.velocity
         if game.alvey.velocity > 0:
@@ -96,7 +99,7 @@ def update(keys):
         else:
             game.alvey.rect.y += game.alvey.velocity
 
-    game.test_map.update()
+    game.test_map.update(moved)
 
     if game.alvey.rect.right <= 0 and game.alvey.dead == False:
         print("boom. dead")

@@ -6,7 +6,7 @@ from sprite import Sprite
 
 # Seconds in an in-game day / night cycle
 # The ten seconds situation is merely for testing, we can make it longer later.
-daySeconds = 10
+daySeconds = 1
 
 # Maximum R, G, B values for sky color
 _R = 164.0
@@ -93,13 +93,8 @@ def draw(fr, delayed):
     game.screen.fill(color_overlay)
 
     game.world.draw()
-
-    game.alvey.draw()
     
-    overlay = pygame.Surface(game.window_size).convert()
-    overlay.set_alpha(colorList[4])
-    overlay.fill((0, 0, 0))
-    game.screen.blit(overlay, (0, 0))
+    game.alvey.draw()
 
     game.test_map.draw()
     draw_hud()
