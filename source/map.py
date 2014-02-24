@@ -163,35 +163,21 @@ class Map:
         for tile in self.tiles:
             if tile[0].tile_type == 'b':
                 collide = self.block_tile(tile) #its a block
-                if collide:
-                    return True
             elif tile[0].tile_type == 'c':
                 collide = self.climb_tile(tile) #its a climb
-                if collide:
-                    return True
             elif tile[0].tile_type == 'e':
                 collide = self.enemy_tile(tile) #its a enemy
-                if collide:
-                    return True
             elif tile[0].tile_type == 't':
                 collide = self.trap_tile(tile) #its a trap
-                if collide:
-                    return True
             elif tile[0].tile_type == 'x':
                 collide = self.death_tile(tile) #its a death
-                if collide:
-                    return True
             elif tile[0].tile_type == 'r':
                 collide = self.ride_tile(tile) #its a ride
-                if collide:
-                    return True
             elif tile[0].tile_type == 'p':
                 collide = self.powerup_tile(tile) #its a powerup
-                if collide:
-                    return True
             elif tile[0].tile_type == 'f':
                 collide = self.finish_tile(tile) #its a finish
-                if collide:
+            if collide:
                     return True
         return collide
     def add(self, tile):
