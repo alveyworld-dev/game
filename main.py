@@ -15,6 +15,7 @@ from source.sound import *
 from source.world import World
 from source.jukebox import Jukebox
 from source.map import *
+from source.enemies import Enemy
 
 clock = pygame.time.Clock()
 
@@ -61,6 +62,11 @@ def init():
     game.alvey.jump_low = game.alvey.jump_power = 8
     game.alvey.speed = game.alvey.speed_slow = 8
     game.alvey.speed_fast = 10
+
+    #Alvey health and damage
+    game.alvey.health = 100
+    if game.alvey.health == 0:
+        game.alvey.death = True
     
 
     game.test_map = MapLoader.load("test3.map")

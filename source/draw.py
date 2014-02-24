@@ -98,6 +98,9 @@ def draw(fr, delayed):
     game.alvey.draw()
 
     game.test_map.draw()
+
+    Enemy.draw()
+
     draw_hud()
 
     return
