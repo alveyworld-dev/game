@@ -58,7 +58,7 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            #game.alvey.rect.x -= game.alvey.speed
+            game.alvey.rect.x -= game.alvey.speed
             moved-=game.alvey.speed
             game.alvey.direction = -1
         elif key == pygame.K_RIGHT:
@@ -70,10 +70,10 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            #game.alvey.rect.x += game.alvey.speed
+            game.alvey.rect.x += game.alvey.speed
             moved+=game.alvey.speed
             game.alvey.direction = 1
-    game.alvey.rect.x=100-game.alvey.rect.width
+    #game.alvey.rect.x=100-game.alvey.rect.width
     
         
 
