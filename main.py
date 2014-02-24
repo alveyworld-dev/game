@@ -53,7 +53,7 @@ def init():
     game.alvey.jump = Sound("Sound/jump.wav")
     
     # Alveysprite physics
-    game.alvey.jumping = None
+    game.alvey.jumping = False
     game.alvey.ducking = False
     game.alvey.gravity = .8
     game.alvey.velocity = 0

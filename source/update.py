@@ -23,6 +23,7 @@ def update(keys):
 
     moved=0
     for key in keys:
+        print key, pygame.K_SPACE
         # Perform jump
         if key == pygame.K_SPACE and game.alvey.jumping == False:
             if not game.alvey.is_down:
