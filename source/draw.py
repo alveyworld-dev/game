@@ -89,8 +89,9 @@ def draw(fr, delayed):
     """
 
     # Draw background
-    color_overlay = solveColors(float(fr), float(delayed))
-    game.screen.fill(color_overlay)
+    # color_overlay = solveColors(float(fr), float(delayed))
+    # game.screen.fill(color_overlay)
+    game.screen.fill((_R, _G, _B))
 
     game.world.draw()
     
