@@ -1,4 +1,4 @@
-#
+ #
 # Pygame Starter Kit
 # Copyright 2014, AlveyLabs Inc
 #
