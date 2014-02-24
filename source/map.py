@@ -69,9 +69,9 @@ class Map:
 
     def update(self,changed):
         #if self.scrolling:
-        #    for tile in self.tiles:
-        #        tile[0].sprite.rect.x-=changed
-        pass
+            for tile in self.tiles:
+                tile[0].sprite.rect.x-=changed
+        #pass
         
     def block_tile(self, tile): #its a block
         tiletop = tile[0].sprite.rect.copy()
