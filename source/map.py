@@ -68,7 +68,7 @@ class Map:
             tile[0].draw()
 
     def update(self,changed):
-        #if self.scrolling:
+        if changed:
             for tile in self.tiles:
                 tile[0].sprite.rect.x-=changed
         #pass
@@ -141,7 +141,8 @@ class Map:
         return False
     
     def enemy_tile(self, tile): #its a enemy
-        
+        if game.alvey.rect.colliderect(tile[0].sprite.rect):
+            print "Ima dumbhead."
         return False
         
     def trap_tile(self, tile): #its a trap

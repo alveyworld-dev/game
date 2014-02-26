@@ -23,7 +23,6 @@ def update(keys):
 
     moved=0
     for key in keys:
-        print key, pygame.K_SPACE
         # Perform jump
         if key == pygame.K_SPACE and game.alvey.jumping == False:
             if not game.alvey.is_down:
@@ -58,8 +57,15 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            game.alvey.rect.x -= game.alvey.speed
-            moved-=game.alvey.speed
+            
+            
+            #only shift screen if close to the edge
+            if game.alvey.rect.x < 300:
+                moved-=game.alvey.speed
+                #game.alvey.rect.x -= game.alvey.speed
+            else:
+                game.alvey.rect.x -= game.alvey.speed
+                
             game.alvey.direction = -1
         elif key == pygame.K_RIGHT:
             
@@ -70,8 +76,13 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            game.alvey.rect.x += game.alvey.speed
-            moved+=game.alvey.speed
+            
+            #only shift screen if close to the edge
+            if game.alvey.rect.x > game.window_size[0]-300:
+                moved+=game.alvey.speed
+                #game.alvey.rect.x += game.alvey.speed
+            else:
+                game.alvey.rect.x += game.alvey.speed
             game.alvey.direction = 1
     #game.alvey.rect.x=100-game.alvey.rect.width
     
@@ -82,7 +93,7 @@ def update(keys):
     if game.test_map.collides_player():
         game.alvey.jumping = False
         game.alvey.velocity = 0
-        moved=0
+        #moved=0
     else:
         #print "Velocity: ", game.alvey.velocity
         if game.alvey.velocity > 0:
@@ -100,7 +111,7 @@ def update(keys):
                     game.alvey.velocity = -5
         else:
             game.alvey.rect.y += game.alvey.velocity
-
+    print "Moved: ", moved
     game.test_map.update(moved)
 
     if game.alvey.rect.right <= 0 and game.alvey.dead == False:
