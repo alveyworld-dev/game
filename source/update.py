@@ -110,4 +110,7 @@ def update(keys):
         if game.alvey.rect.right >= 0:
             game.alvey.rect.x -= 1
 
+    # print alvey's health
+    print game.alvey.health
+
     return
