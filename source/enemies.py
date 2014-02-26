@@ -20,7 +20,7 @@ class Enemy:
 
 	def damage():
 		if game.alvey.rect.colliderect(self.sprite.rect) == True:
-			game.alvey.health -= 100
+			game.alvey.health = 0
 
 
 

@@ -38,6 +38,7 @@ def init():
     game.world.load()
     jukebox = Jukebox()
     jukebox.play()
+    game.enemy = Enemy()
 
     # Player (Alvey)
     game.standing = pygame.Rect(0,0,20,63)

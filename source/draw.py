@@ -99,7 +99,7 @@ def draw(fr, delayed):
 
     game.test_map.draw()
 
-    Enemy.draw()
+    game.enemy.draw()
 
     draw_hud()
 
