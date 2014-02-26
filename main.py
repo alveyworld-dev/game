@@ -67,7 +67,7 @@ def init():
     #Alvey health and damage
     game.alvey.health = 100
     if game.alvey.health == 0:
-        game.alvey.death = True
+        print "Mr. Alvey has died"
     
 
     game.test_map = MapLoader.load("test3.map")

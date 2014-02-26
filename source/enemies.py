@@ -19,7 +19,7 @@ class Enemy:
 			self.direction=not self.direction
 
 	def damage():
-		if game.alvey.rect.colliderect(self.sprite.rect) == True:
+		if game.alvey.rect.colliderect(game.alvey.sprite.rect) == True:
 			game.alvey.health = 0
 
 
