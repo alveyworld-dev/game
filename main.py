@@ -40,7 +40,9 @@ def init():
 
     # Player (Alvey)
     game.standing = pygame.Rect(2,0,23,64)
-    game.standingl = pygame.Rect(2,64,20,64) 
+    game.standingl = pygame.Rect(2,64,20,64)
+    game.jumping = pygame.Rect(269,0,40,64)
+    game.jumpingl = pygame.Rect(185,64,39,64)
     game.walking = [pygame.Rect(27,0,40,64),pygame.Rect(75,0,40,64),pygame.Rect(116,0,27,64),pygame.Rect(157,0,27,64),pygame.Rect(183,0,37,64),pygame.Rect(223,0,40,64),pygame.Rect(269,0,40,64),pygame.Rect(318,0,40,64),pygame.Rect(362,0,37,64),pygame.Rect(402,0,29,64),pygame.Rect(430,0,37,64)]
     game.walkingl = [pygame.Rect(27,64,37,64),pygame.Rect(66,64,25,64),pygame.Rect(104,64,28,64),pygame.Rect(138,64,38,64),pygame.Rect(185,64,39,64),pygame.Rect(230,64,40,64),pygame.Rect(274,64,37,64),pygame.Rect(312,64,25,64),pygame.Rect(349,64,29,64),pygame.Rect(381,64,39,64),pygame.Rect(426,64,40,64)]
     game.crouching = pygame.Rect(466,27,24,37)

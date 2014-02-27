@@ -100,40 +100,19 @@ class Map:
         alveytile.bottom += 7
 
         if alveytile.colliderect(tileleft):
-            print "LEFTHIT"
+            #print "LEFTHIT"
             game.alvey.rect.right = tile[0].sprite.rect.left-1
-            if tile[0].tile_type == 'f':
-                if not self.finished:
-                    self.finished = True
-                    print("Level complete")
-            
         elif alveytile.colliderect(tileright):
-            print " RIGHTHIT"
+            #print " RIGHTHIT"
             game.alvey.rect.left = tile[0].sprite.rect.right+1
-            if tile[0].tile_type == 'f':
-                if not self.finished:
-                    self.finished = True
-                    print("Level complete")
-            
         elif game.alvey.rect.colliderect(tilebottom):
-            print "BOTTOMHIT"
+            #print "BOTTOMHIT"
             game.alvey.rect.top = tile[0].sprite.rect.bottom+1
             game.alvey.velocity *= -1
-            if tile[0].tile_type == 'f':
-                if not self.finished:
-                    self.finished = True
-                    print("Level complete")
-
         elif alveytile.colliderect(tiletop):
-            print "TOPHIT"
+            #print "TOPHIT"
             game.alvey.velocity = 0
             game.alvey.rect.bottom = tile[0].sprite.rect.top+1
-            if tile[0].tile_type == 'f':
-                if not self.finished:
-                    self.finished = True
-                    print("Level complete")
-
-            #pygame.display.flip()
             return True
         return False
         
@@ -158,6 +137,14 @@ class Map:
         return False
         
     def finish_tile(self, tile): #its a finish
+        if game.alvey.rect.colliderect(tile[0].sprite.rect):
+                if not self.finished:
+                    self.finished = True
+                    print("Level complete")
+                    game.alvey.velocity = 0
+
+                return True
+
         return False
     
     def collides_player(self):

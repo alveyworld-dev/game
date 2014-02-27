@@ -19,6 +19,8 @@ class Sprite(pygame.sprite.Sprite):
         game.screen.blit(self.image, self.rect, area=self.area)
         
     def change_costume(self, costume):
+        bottom = self.rect.bottom
         self.rect.width = costume.width
         self.rect.height = costume.height
         self.area = costume
+        self.rect.bottom = bottom
