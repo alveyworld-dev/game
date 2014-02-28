@@ -47,7 +47,7 @@ def init():
     game.walkingl = [pygame.Rect(27,64,37,64),pygame.Rect(66,64,25,64),pygame.Rect(104,64,28,64),pygame.Rect(138,64,38,64),pygame.Rect(185,64,39,64),pygame.Rect(230,64,40,64),pygame.Rect(274,64,37,64),pygame.Rect(312,64,25,64),pygame.Rect(349,64,29,64),pygame.Rect(381,64,39,64),pygame.Rect(426,64,40,64)]
     game.crouching = pygame.Rect(466,27,24,33)
     game.crouchingl = pygame.Rect(466,91,24,33)
-    game.alvey = Sprite("art_team/alveyspritesheet.png", (125, 500), game.standing)
+    game.alvey = Sprite("art_team/alveyspritesheet.png", (125, 192), game.standing)
     #game.alvey.rect = game.alvey.area
     game.alvey.dead = False
     game.alvey.direction = 1
@@ -66,7 +66,7 @@ def init():
     game.alvey.speed_fast = 10
     
 
-    game.test_map = MapLoader.load("test3.map")
+    game.test_map = MapLoader.load("Faires.map")
     game.score = 0
 
 
