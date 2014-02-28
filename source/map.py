@@ -143,7 +143,12 @@ class Map:
                     print("Level complete")
                     game.alvey.velocity = 0
 
-                return True
+                    #change level
+                    game.alvey.rect.x = 20
+                    game.alvey.rect.y = 20
+                    game.test_map = MapLoader.load("preston.map")
+
+                return False
 
         return False
     
