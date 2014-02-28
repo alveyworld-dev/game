@@ -22,7 +22,7 @@ def update(keys):
             game.alvey.toggle += 1
 
     moved=0
-    if len(keys) == 0 and not game.alvey.jumping:
+    if pygame.K_SPACE not in keys and pygame.K_RIGHT not in keys and pygame.K_LEFT not in keys and pygame.K_DOWN not in keys and not game.alvey.jumping:
         if game.alvey.direction == -1:
             game.alvey.change_costume(game.standingl)
         else:
@@ -50,7 +50,11 @@ def update(keys):
         if key == pygame.K_DOWN and game.alvey.jumping == True:
             #if not game.test_map.collides_player():
             #    game.alvey.velocity += game.alvey.gravity
-            pass#game.alvey.rect.y += game.alvey.velocity
+            #game.alvey.rect.y += game.alvey.velocity
+            if game.alvey.direction == -1:
+                game.alvey.change_costume(game.crouchingl)
+            else:
+                game.alvey.change_costume(game.crouching)
         elif key == pygame.K_DOWN:
             if game.alvey.direction == -1:
                 game.alvey.change_costume(game.crouchingl)
@@ -66,7 +70,7 @@ def update(keys):
                 costumes = len(game.walkingl)
                 game.alvey.change_costume(game.walkingl[game.alvey.toggle%costumes])
 
-            if game.alvey.jumping:
+            if not game.alvey.is_down and game.alvey.jumping:
                 game.alvey.change_costume(game.jumpingl)
 
             if pygame.K_b in keys:
@@ -89,7 +93,7 @@ def update(keys):
                 costumes = len(game.walking)
                 game.alvey.change_costume(game.walking[game.alvey.toggle%costumes])
 
-            if game.alvey.jumping:
+            if not game.alvey.is_down and game.alvey.jumping:
                 game.alvey.change_costume(game.jumping)
 
             if pygame.K_b in keys:
