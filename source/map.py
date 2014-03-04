@@ -117,6 +117,8 @@ class Map:
         return False
         
     def climb_tile(self, tile): #its a climb
+        if game.alvey.rect.colliderect(tile[0].sprite.rect):
+            return True
         return False
     
     def enemy_tile(self, tile): #its a enemy
@@ -125,6 +127,10 @@ class Map:
         return False
         
     def trap_tile(self, tile): #its a trap
+        if game.alvey.rect.colliderect(tile[0].sprite.rect):
+            game.alvey.velocity = .1
+            return True
+
         return False
         
     def death_tile(self, tile): #its a death
