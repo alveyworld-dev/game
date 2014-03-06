@@ -122,6 +122,10 @@ class Map:
         return False
     
     def enemy_tile(self, tile): #its a enemy
+        alveyspos = (game.alvey.rect.x, game.alvey.rect.y)
+        
+        tile[0].sprite.rect.x -= 5;
+
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
             print "Ima dumbhead."
         return False
