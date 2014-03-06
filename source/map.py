@@ -3,7 +3,7 @@ import pygame
 import sys
 import os
 from sprite import Sprite
-from enemy import Enemy
+
 
 
 class TileType:
@@ -69,6 +69,7 @@ class Enemy(Tile):
             self.sprite.rect.y += 5
         else:
             self.sprite.rect.x -= 2
+        
         #self.sprite.rect.x -= 1
         self.sprite.draw()
 
@@ -149,8 +150,6 @@ class Map:
     
     def enemy_tile(self, tile): #its a enemy
         alveyspos = (game.alvey.rect.x, game.alvey.rect.y)
-        
-        tile[0].sprite.rect.x -= 5;
 
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
             print "Ima dumbhead."
