@@ -3,6 +3,7 @@ import pygame
 import sys
 import os
 from sprite import Sprite
+from enemy import Enemy
 
 
 class TileType:
@@ -50,6 +51,27 @@ class Tile:
     def draw(self):
         self.sprite.draw()
 
+class Enemy(Tile):
+
+    def __init__(self, tiletype, starting_pos=(0,0), costume="art_team/bee.png" ):
+        Tile.__init__(self, tiletype, starting_pos)
+        self.alive = True
+        # not exact syntax, just basic idea
+        self.sprite = Sprite(costume, starting_pos)
+    def update():
+        pass
+
+    def die():
+        pass
+
+    def draw(self):
+        if not game.test_map.collides_enemy(self):
+            self.sprite.rect.y += 5
+        else:
+            self.sprite.rect.x -= 2
+        #self.sprite.rect.x -= 1
+        self.sprite.draw()
+
 
 class Map:
 
@@ -73,7 +95,7 @@ class Map:
                 tile[0].sprite.rect.x-=changed
         #pass
         
-    def block_tile(self, tile): #its a block
+    def block_tile(self, tile, enemy=None): #its a block
         tiletop = tile[0].sprite.rect.copy()
         tileleft = tile[0].sprite.rect.copy()
         tileright = tile[0].sprite.rect.copy()
@@ -99,6 +121,9 @@ class Map:
         alveytile.height = game.alvey.rect.height-7
         alveytile.bottom += 7
 
+        if enemy:
+            return enemy.sprite.rect.colliderect(tiletop)
+
         if alveytile.colliderect(tileleft):
             #print "LEFTHIT"
             game.alvey.rect.right = tile[0].sprite.rect.left-1
@@ -115,6 +140,7 @@ class Map:
             game.alvey.rect.bottom = tile[0].sprite.rect.top+1
             return True
         return False
+
         
     def climb_tile(self, tile): #its a climb
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
@@ -185,6 +211,17 @@ class Map:
             if collide:
                     return True
         return collide
+
+
+    def collides_enemy(self, enemy):
+        #print "collides_player()"
+        collide = False
+        for tile in self.tiles:
+            if tile[0].tile_type == 'b':
+                collide = self.block_tile(tile, enemy=enemy) 
+            if collide:
+                    return True
+        return collide
     def add(self, tile):
         self.tiles.append([tile,tile.sprite.rect.x])
 
@@ -213,9 +250,17 @@ class MapLoader:
             for tile_y, line in enumerate(f):
                 for tile_x, tile in enumerate(line):
                     if not tile == '.' and not tile == '\n':
-                        mT = Tile(tile,
+                        if tile == 'e':
+                            mT = Enemy(tile, starting_pos=(MapLoader.tile_offset(tile_x), MapLoader.tile_offset(tile_y)), costume="art_team/bee.png")
+                        else:
+                            mT = Tile(tile,
                                  (MapLoader.tile_offset(tile_x),
                                   MapLoader.tile_offset(tile_y)))
                         retmap.add(mT)
 
         return retmap
+
+
+
+
+
