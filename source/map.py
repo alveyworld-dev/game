@@ -152,7 +152,7 @@ class Map:
         alveyspos = (game.alvey.rect.x, game.alvey.rect.y)
 
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
-            print "Ima dumbhead."
+            game.alvey.dead = True
         return False
         
     def trap_tile(self, tile): #its a trap
