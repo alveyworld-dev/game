@@ -7,6 +7,8 @@ def update(keys):
     Update game world here
     """
 
+    old_health = game.alvey.health
+
     game.world.update()
 
     # Handle input
@@ -35,7 +37,7 @@ def update(keys):
             else:
                 game.alvey.change_costume(game.jumping)
 
-            
+
             game.alvey.jumping = True
 
             game.alvey.jump.play()
@@ -43,10 +45,10 @@ def update(keys):
                 game.alvey.jump_power = game.alvey.jump_high
             else:
                 game.alvey.jump_power = game.alvey.jump_low
-           
+
             game.alvey.velocity -= game.alvey.jump_power
             game.alvey.rect.y += game.alvey.velocity
-        
+
         if key == pygame.K_DOWN and game.alvey.jumping == True:
             #if not game.test_map.collides_player():
             #    game.alvey.velocity += game.alvey.gravity
@@ -77,18 +79,18 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            
-            
+
+
             #only shift screen if close to the edge
             if game.alvey.rect.x < 300:
                 moved-=game.alvey.speed
                 #game.alvey.rect.x -= game.alvey.speed
             else:
                 game.alvey.rect.x -= game.alvey.speed
-                
+
             game.alvey.direction = -1
         elif key == pygame.K_RIGHT:
-            
+
             if not game.alvey.is_down and not game.alvey.jumping:
                 costumes = len(game.walking)
                 game.alvey.change_costume(game.walking[game.alvey.toggle%costumes])
@@ -100,7 +102,7 @@ def update(keys):
                 game.alvey.speed = game.alvey.speed_fast
             else:
                 game.alvey.speed = game.alvey.speed_slow
-            
+
             #only shift screen if close to the edge
             if game.alvey.rect.x > game.window_size[0]-300:
                 moved+=game.alvey.speed
@@ -109,7 +111,7 @@ def update(keys):
                 game.alvey.rect.x += game.alvey.speed
             game.alvey.direction = 1
     #game.alvey.rect.x=100-game.alvey.rect.width
-    
+
     # Handle gravity
 
     if game.test_map.collides_player():
@@ -143,5 +145,8 @@ def update(keys):
     if game.test_map.scrolling:
         if game.alvey.rect.right >= 0:
             game.alvey.rect.x -= 1
+
+    if game.alvey.health != old_health:
+        print game.alvey.health
 
     return

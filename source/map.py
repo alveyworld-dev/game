@@ -21,7 +21,8 @@ class TileType:
             'x': ("sand-tile.png", "death"),
             'r': ("testride-tile.gif", "ride"),
             'p': ("testpowerup-tile.gif", "powerup"),
-            'f': ("finished-tile.png", "finished")
+            'f': ("finished-tile.png", "finished"),
+            's': ("spawn-tile.png", "spawn")
         }
 
     def __getitem__(self, key):
@@ -53,7 +54,7 @@ class Tile:
 
 class Enemy(Tile):
 
-    def __init__(self, tiletype, starting_pos=(0,0), costume="art_team/bee.png" ):
+    def __init__(self, tiletype, starting_pos=(0,0), costume="art_team/bee.png"):
         Tile.__init__(self, tiletype, starting_pos)
         self.alive = True
         # not exact syntax, just basic idea
@@ -69,7 +70,7 @@ class Enemy(Tile):
             self.sprite.rect.y += 5
         else:
             self.sprite.rect.x -= 2
-        
+
         #self.sprite.rect.x -= 1
         self.sprite.draw()
 
@@ -95,7 +96,7 @@ class Map:
             for tile in self.tiles:
                 tile[0].sprite.rect.x-=changed
         #pass
-        
+
     def block_tile(self, tile, enemy=None): #its a block
         tiletop = tile[0].sprite.rect.copy()
         tileleft = tile[0].sprite.rect.copy()
@@ -107,7 +108,7 @@ class Map:
         tileleft.width = 5
         tileleft.height = 22
         tileleft.bottom += 5
-        
+
         tilebottom.height = 5
         tilebottom.bottom += 27
         tilebottom.width = 20
@@ -142,35 +143,36 @@ class Map:
             return True
         return False
 
-        
+
     def climb_tile(self, tile): #its a climb
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
             return True
         return False
-    
+
     def enemy_tile(self, tile): #its a enemy
         alveyspos = (game.alvey.rect.x, game.alvey.rect.y)
 
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
-            print "Ima dumbhead."
+            if not game.alvey.dead:
+                print "Ima dumbhead."
         return False
-        
+
     def trap_tile(self, tile): #its a trap
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
             game.alvey.velocity = .1
             return True
 
         return False
-        
+
     def death_tile(self, tile): #its a death
         return False
-        
+
     def ride_tile(self, tile): #its a ride
         return False
-    
+
     def powerup_tile(self, tile): #its a powerup
         return False
-        
+
     def finish_tile(self, tile): #its a finish
         if game.alvey.rect.colliderect(tile[0].sprite.rect):
                 if not self.finished:
@@ -186,7 +188,7 @@ class Map:
                 return False
 
         return False
-    
+
     def collides_player(self):
         #print "collides_player()"
         collide = False
@@ -217,7 +219,7 @@ class Map:
         collide = False
         for tile in self.tiles:
             if tile[0].tile_type == 'b':
-                collide = self.block_tile(tile, enemy=enemy) 
+                collide = self.block_tile(tile, enemy=enemy)
             if collide:
                     return True
         return collide
@@ -251,6 +253,9 @@ class MapLoader:
                     if not tile == '.' and not tile == '\n':
                         if tile == 'e':
                             mT = Enemy(tile, starting_pos=(MapLoader.tile_offset(tile_x), MapLoader.tile_offset(tile_y)), costume="art_team/bee.png")
+                        elif tile == 's':
+                            game.alvey.rect.x = MapLoader.tile_offset(tile_x)
+                            game.alvey.rect.y = MapLoader.tile_offset(tile_y)
                         else:
                             mT = Tile(tile,
                                  (MapLoader.tile_offset(tile_x),
@@ -258,8 +263,3 @@ class MapLoader:
                         retmap.add(mT)
 
         return retmap
-
-
-
-
-

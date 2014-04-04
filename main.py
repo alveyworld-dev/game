@@ -1,4 +1,4 @@
- #
+#
 # Pygame Starter Kit
 # Copyright 2014, AlveyLabs Inc
 #
@@ -36,7 +36,7 @@ def init():
     game.world = World()
     game.world.load()
     jukebox = Jukebox()
-    jukebox.play()
+    # jukebox.play()
 
     # Player (Alvey)
     game.standing = pygame.Rect(2,0,23,64)
@@ -54,7 +54,9 @@ def init():
     game.alvey.is_down = False
     game.alvey.toggle = 0
     game.alvey.jump = Sound("Sound/jump.wav")
-    
+    game.alvey.health = 100
+    game.alvey.hearts = game.alvey.health / 4
+
     # Alveysprite physics
     game.alvey.jumping = False
     game.alvey.ducking = False
@@ -64,7 +66,6 @@ def init():
     game.alvey.jump_low = game.alvey.jump_power = 8
     game.alvey.speed = game.alvey.speed_slow = 8
     game.alvey.speed_fast = 10
-    
 
     game.test_map = MapLoader.load("test3.map")
     game.score = 0
@@ -82,7 +83,7 @@ def main():
     keys = set()
 
     # Set up game
-    init()
+    init()    
 
     # Perform game loop
     while True:
