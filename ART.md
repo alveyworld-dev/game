@@ -10,7 +10,7 @@ alveyworldgameart@gmail.com
 * Run
 * Crouch
 * Jump
-* Powerjump (will prbably be a powerup)
+* Powerjump (will probably be a powerup)
 
 # EDIT
 - Right now, the biggest thing we need in the art department is concept for enemies based on the levels, Please check out the levels list and make your enemies in photoshop.  Please include the level they're supposed to be in along with the file, or somewhere inside. Thank you.
